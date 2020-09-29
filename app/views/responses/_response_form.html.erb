@@ -1,0 +1,8 @@
+<%= simple_form_for [@event, @response] do |f| %>
+  <h5>Are you in?</h5>
+  <%= f.input :attendence, collection: Response.attendences, as: :radio_buttons %>
+  <%= f.input :name %>
+  <%= f.input :message %>
+  <%= f.input :email %>
+  <%= f.submit "Send RSVP", class:"btn btn-primary" %>
+<% end %>

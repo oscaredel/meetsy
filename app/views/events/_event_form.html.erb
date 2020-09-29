@@ -1,0 +1,15 @@
+<%= simple_form_for @event do |f| %>
+  <div class="row">
+    <div class="col-md-5 offset-1">
+        <%= f.input :name %>
+        <%= f.input :date_time %>
+        <%= f.input :location %>
+        <%= f.input :description %>
+    </div>
+    <div class="col-md-4 offset-1">
+        <%= f.input :organiser_name %>
+        <%= f.input :organiser_email %>
+        <%= f.submit "Save Event", class:"btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
