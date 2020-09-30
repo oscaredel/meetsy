@@ -1,52 +1,60 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-5 offset-1">
-      <h1><%= @event.name %></h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-5 offset-1">
-      <h5>When</h5>
-      <p><%= @event.date_time %> </p>
-      <h5>Where</h5>
-      <p><%= @event.location %></p>
-      <h5>About</h5>
-      <p><%= @event.description %> </p>
-      <p><%= link_to "edit", edit_event_path(@event), class:'btn btn-warning'%></p>
-      <p><%= link_to "delete", event_path(@event), method: :delete, class:'btn btn-danger'%></p>
-    </div>
-
-    <div class="col-md-4 offset-1">
-      <h5>organised by</h5>
-      <p><%= @event.organiser_name %></p>
-
-      <% if @event.responses.yes.empty? %>
-      <h5>Nobody is attending yet</h5>
-      <% else %>
-      <h5>They are in</h5>
-      <% end %>
-
-      <% @event.responses.yes.each do |response| %>
-      <p><%= response.name %><small> <%= response.message %></small></p>
-      <% end %>
-
-      <% unless @event.responses.maybe.empty? %>
-      <h5>They might be there</h5>
-      <% end %>
-
-      <% @event.responses.maybe.each do |response| %>
-      <p><%= response.name %> <small> <%= response.message %></small></p>
-      <% end %>
-
-      <% unless @event.responses.no.empty? %>
-      <h5>They can't make it</h5>
-      <% end %>
-
-      <% @event.responses.no.each do |response| %>
-      <p><%= response.name %><small> <%= response.message %></small></p>
-      <% end %>
-
-      <%= render 'responses/response_form' %>
-    </div>
+<div class="row event-image rounded-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1498940757830-82f7813bf178?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80);">
+  <div class="col">
+    <h1><%= @event.name %></h1>
   </div>
 </div>
+
+<div class="row bg-white details py-2 rounded-bottom">
+  <div class="col-md-8 description">
+    <p><%= @event.description %></p>
+  </div>
+  <div class="col-md-4 info">
+    <div class="time my-2">
+      <h4 class="d-inline">🕗</h4> <%= @event.date_time.strftime("%d %B at %H:%M")    %>
+    </div>
+    <div class="place my-2">
+      <h4 class="d-inline">📍</h4> <%= @event.location %>
+    </div>
+    <div class="organized-by my-2">
+      <h4 class="d-inline">👩‍💻</h4> <%= @event.organiser_name %>
+    </div>
+    <%= link_to "edit", edit_event_path(@event), class:"btn btn-outline-warning" %>
+    <%= link_to "delete", event_path(@event), class:"btn btn-outline-danger", method: :delete %>
+  </div>
+</div>
+
+<div class="row bg-white py-2 mt-5 rounded">
+  <div class="col-md-8">
+    <%= render 'responses/response_form' %>
+  </div>
+
+  <div class="col-md-4">
+
+    <% if @event.responses.yes.empty? %>
+    <h5>nobody is attending yet</h5>
+    <% else %>
+    <h4 class="d-inline">👋</h4> also attending
+    <% end %>
+
+    <% @event.responses.yes.each do |response| %>
+    <p><%= response.name %><small> <%= response.message %></small></p>
+    <% end %>
+
+    <% unless @event.responses.maybe.empty? %>
+    <h4 class="d-inline">🤞</h4> might be there</h5>
+    <% end %>
+
+    <% @event.responses.maybe.each do |response| %>
+    <p><%= response.name %> <small> <%= response.message %></small></p>
+    <% end %>
+
+    <% unless @event.responses.no.empty? %>
+    <h4 class="d-inline">✌️</h4> can't make it
+    <% end %>
+
+    <% @event.responses.no.each do |response| %>
+    <p><%= response.name %><small> <%= response.message %></small></p>
+    <% end %>
+  </div>
+</div>
+

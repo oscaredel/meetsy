@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_081016) do
     t.string "name"
     t.string "email"
     t.string "message"
-    t.integer "attendence"
+    t.integer "attendance"
     t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

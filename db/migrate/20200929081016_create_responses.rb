@@ -4,7 +4,7 @@ class CreateResponses < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :email
       t.string :message
-      t.integer :attendence
+      t.integer :attendance
       t.references :event, null: false, foreign_key: true
 
       t.timestamps

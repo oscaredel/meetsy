@@ -14,6 +14,6 @@ class ResponsesController < ApplicationController
   private
 
   def response_params
-    params.require(:response).permit(:name, :email, :attendence, :message)
+    params.require(:response).permit(:name, :email, :attendance, :message)
   end
 end
