@@ -4,5 +4,5 @@ class Event < ApplicationRecord
 
   validates :organiser_email,
             format: { with: /(.+)@(.+)/, message: "not valid" },
-            uniqueness: { case_sensitive: false, scope: :event }
+            uniqueness: { case_sensitive: false }
 end
