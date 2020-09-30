@@ -19,7 +19,11 @@
       <h4 class="d-inline">👩‍💻</h4> <%= @event.organiser_name %>
     </div>
     <%= link_to "edit", edit_event_path(@event), class:"btn btn-outline-warning" %>
-    <%= link_to "delete", event_path(@event), class:"btn btn-outline-danger", method: :delete %>
+    <%= link_to "delete",
+                event_path(@event),
+                class:"btn btn-outline-danger",
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
   </div>
 </div>
 
@@ -31,30 +35,45 @@
   <div class="col-md-4">
 
     <% if @event.responses.yes.empty? %>
-    <h5>nobody is attending yet</h5>
+      <p>nobody is attending yet</p>
     <% else %>
-    <h4 class="d-inline">👋</h4> also attending
+      <h4 class="d-inline">👋</h4> also attending
     <% end %>
 
     <% @event.responses.yes.each do |response| %>
-    <p><%= response.name %><small> <%= response.message %></small></p>
+      <p>
+        <%= response.name %><small> <%= response.message %></small>
+        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-success' %>
+        <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
+      </p>
     <% end %>
 
+
     <% unless @event.responses.maybe.empty? %>
-    <h4 class="d-inline">🤞</h4> might be there</h5>
+      <h4 class="d-inline">🤞</h4> might be there
     <% end %>
 
     <% @event.responses.maybe.each do |response| %>
-    <p><%= response.name %> <small> <%= response.message %></small></p>
+      <p>
+        <%= response.name %> <small> <%= response.message %></small>
+        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-success' %>
+        <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
+      </p>
     <% end %>
 
+
     <% unless @event.responses.no.empty? %>
-    <h4 class="d-inline">✌️</h4> can't make it
+      <h4 class="d-inline">✌️</h4> can't make it
     <% end %>
 
     <% @event.responses.no.each do |response| %>
-    <p><%= response.name %><small> <%= response.message %></small></p>
+      <p>
+        <%= response.name %><small> <%= response.message %></small>
+        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-success' %>
+        <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
+      </p>
     <% end %>
+
   </div>
 </div>
 
