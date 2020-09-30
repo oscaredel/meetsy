@@ -1,6 +1,14 @@
 <div class="row event-image rounded-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1498940757830-82f7813bf178?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80);">
   <div class="col">
-    <h1><%= @event.name %></h1>
+    <h1 class="d-inline"><%= @event.name %></h1>
+    <h5 class="d-inline">
+        <%= link_to icon('fas', 'edit'), edit_event_path(@event), class:'text-warning' %>
+        <%= link_to icon('fas', 'trash'),
+                    event_path(@event),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    class:'text-danger' %>
+    </h5>
   </div>
 </div>
 
@@ -18,12 +26,6 @@
     <div class="organized-by my-2">
       <h4 class="d-inline">👩‍💻</h4> <%= @event.organiser_name %>
     </div>
-    <%= link_to "edit", edit_event_path(@event), class:"btn btn-outline-warning" %>
-    <%= link_to "delete",
-                event_path(@event),
-                class:"btn btn-outline-danger",
-                method: :delete,
-                data: { confirm: "Are you sure?" } %>
   </div>
 </div>
 
@@ -32,44 +34,44 @@
     <%= render 'responses/response_form' %>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-4 mt-5">
 
     <% if @event.responses.yes.empty? %>
-      <p>nobody is attending yet</p>
+      <p class="d-inline border-bottom">Nobody is attending yet</p>
     <% else %>
-      <h4 class="d-inline">👋</h4> also attending
+      <h4 class="d-inline">👋</h4> <p class="d-inline border-bottom">Also attending are</p>
     <% end %>
 
     <% @event.responses.yes.each do |response| %>
-      <p>
-        <%= response.name %><small> <%= response.message %></small>
-        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-success' %>
+      <p class="ml-4">
+        <%= response.name %>  <small><%= response.message %></small>
+        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
         <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
       </p>
     <% end %>
 
 
     <% unless @event.responses.maybe.empty? %>
-      <h4 class="d-inline">🤞</h4> might be there
+      <h4 class="d-inline">🤞</h4> <p class="d-inline border-bottom">They might be there</p>
     <% end %>
 
     <% @event.responses.maybe.each do |response| %>
-      <p>
-        <%= response.name %> <small> <%= response.message %></small>
-        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-success' %>
+      <p class="ml-4">
+        <%= response.name %>  <small><%= response.message %></small>
+        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
         <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
       </p>
     <% end %>
 
 
     <% unless @event.responses.no.empty? %>
-      <h4 class="d-inline">✌️</h4> can't make it
+      <h4 class="d-inline">✌️</h4> <p class="d-inline border-bottom">They can't make it</p>
     <% end %>
 
     <% @event.responses.no.each do |response| %>
-      <p>
-        <%= response.name %><small> <%= response.message %></small>
-        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-success' %>
+      <p class="ml-4">
+        <%= response.name %>  <small><%= response.message %></small>
+        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
         <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
       </p>
     <% end %>
