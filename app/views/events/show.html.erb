@@ -1,4 +1,10 @@
-<div class="row event-image rounded-top" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @event.image.key, height: 300, width: 400, crop: :fill %>')">
+<div class="row event-image rounded-top" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                                                                  url('<%= if @event.image.attached?
+                                                                             cl_image_path(@event.image.key, height: 300, width: 400, crop: :fill)
+                                                                           else # show default placeholder-image
+                                                                            "https://images.unsplash.com/photo-1557801200-9a8d901ded2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1374&q=80"
+                                                                           end %>')">
+
   <div class="col">
     <h1 class="d-inline"><%= @event.name %></h1>
     <h5 class="d-inline">
