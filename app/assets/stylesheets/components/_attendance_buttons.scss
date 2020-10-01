@@ -1,0 +1,35 @@
+input[type="radio"] {
+  display:none;
+}
+
+.radio_buttons {
+  label {
+    border-radius: 5px;
+    padding: 8px 16px 8px 16px;
+    transition: 0.5s ease;
+    color: white;
+    font-size: 16pt;
+    background-color: #ddd
+  }
+
+  label:hover {
+    cursor:pointer;
+    background-color:#eee;
+  }
+
+  input[type="radio"]:checked + {
+    label[for=response_attendance_no] {
+      background-color: $danger;
+    }
+
+    label[for=response_attendance_yes] {
+      background-color: $green;
+    }
+
+    label[for=response_attendance_maybe] {
+      background-color: $warning;
+    }
+  }
+}
+
+

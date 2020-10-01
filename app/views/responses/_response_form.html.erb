@@ -1,8 +1,13 @@
 <%= simple_form_for [@event, @response] do |f| %>
-  <h5>Are you in?</h5>
-  <%= f.input :attendance, collection: Response.attendances.keys, as: :radio_buttons, selected: Response.attendances.keys[@response[:attendance].to_i] %>
+  <%= f.input :attendance,
+              label: "Are you in?" ,
+              collection: [[icon('fas', 'check'), :yes, checked: true],
+                           [icon('fas', 'minus'), :maybe],
+                           [icon('fas', 'times'), :no]],
+              as: :radio_buttons,
+              item_wrapper_class: 'form-check form-check-inline' %>
   <%= f.input :name %>
-  <%= f.input :message, hint: 'Everybody invited can read it' %>
-  <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response' %>
+  <%= f.input :message, hint: 'Everybody invited can read it.' %>
+  <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response.' %>
   <%= f.submit "Send RSVP", class:"btn btn-success" %>
 <% end %>
