@@ -1,6 +1,6 @@
 <%= simple_form_for [@event, @response] do |f| %>
   <h5>Are you in?</h5>
-  <%= f.input :attendance, collection: Response.attendances, as: :radio_buttons %>
+  <%= f.input :attendance, collection: Response.attendances.keys, as: :radio_buttons, selected: Response.attendances.keys[@response[:attendance].to_i] %>
   <%= f.input :name %>
   <%= f.input :message, hint: 'Everybody invited can read it' %>
   <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response' %>
