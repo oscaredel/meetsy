@@ -46,6 +46,7 @@ class EventsController < ApplicationController
                                   :date_time,
                                   :location,
                                   :description,
+                                  :image,
                                   :organiser_name,
                                   :organiser_email)
   end

@@ -1,4 +1,4 @@
-<div class="row event-image rounded-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1498940757830-82f7813bf178?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80);">
+<div class="row event-image rounded-top" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @event.image.key, height: 300, width: 400, crop: :fill %>')">
   <div class="col">
     <h1 class="d-inline"><%= @event.name %></h1>
     <h5 class="d-inline">
