@@ -1,1 +1,2 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+This is an app to plan events instantly, privately.
+For an event you can request RSVPs and give updates. After the event you can add pictures which everybody can download.

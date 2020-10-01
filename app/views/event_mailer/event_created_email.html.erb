@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Meetsy, <%= @event.organiser_name %></h1>
+    <p>You have created an new event at Meetsy.com</p>
+    <p>To manage the event, just follow this link: <%= link_to "Manage event", event_url(@event) %></p>
+    <p>Thanks for trusting us and have a great day!</p>
+  </body>
+</html>
