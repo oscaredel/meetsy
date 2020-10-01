@@ -1,13 +1,13 @@
 <%= simple_form_for @event do |f| %>
-  <div class="row">
-    <div class="col-md-5 offset-1">
+  <div class="row bg-white rounded py-2">
+    <div class="col-md-5">
         <%= f.input :name %>
         <%= f.input :date_time %>
         <%= f.input :location %>
         <%= f.input :description %>
         <%= f.input :image, as: :file %>
     </div>
-    <div class="col-md-4 offset-1">
+    <div class="col-md-4 offset-2">
         <%= f.input :organiser_name %>
         <%= f.input :organiser_email %>
         <%= f.submit "Save Event", class:"btn btn-primary" %>

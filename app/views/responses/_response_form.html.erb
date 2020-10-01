@@ -5,7 +5,8 @@
                            [icon('fas', 'minus'), :maybe],
                            [icon('fas', 'times'), :no]],
               as: :radio_buttons,
-              item_wrapper_class: 'form-check form-check-inline' %>
+              item_wrapper_class: 'form-check form-check-inline',
+              required: false %>
   <%= f.input :name %>
   <%= f.input :message, hint: 'Everybody invited can read it.' %>
   <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response.' %>
