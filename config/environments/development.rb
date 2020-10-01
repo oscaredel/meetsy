@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  ####### BELOW DOES NOT SEEM TO BE TRUE, RESTART APP WHEN ADJUSTING CONFIG.
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -36,8 +37,11 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-
+  # set domain used in e-mails and use letter-opener gem to automatically open e-mails in browser while developing
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :letter_opener
+  # put to false to disable letter-opener
+  config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
