@@ -62,8 +62,12 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  # manually added option, set once domain is secure
-  # config.action_mailer.default_url_options = "meetsy.com"
+  # Set domain used in e-mails and use letter-opener gem to automatically open e-mails in browser while developing
+  config.action_mailer.default_url_options = { host: 'meetsy.herokuapp.com' }
+  # set to false to disable e-mails.
+  config.action_mailer.perform_deliveries = false
+  config.action_mailer.delivery_method = false  # or for example :smtp to test with personal gmail (then also send secrets to heroku)
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
