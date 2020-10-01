@@ -39,7 +39,7 @@ Rails.application.configure do
 
   # set domain used in e-mails and use letter-opener gem to automatically open e-mails in browser while developing
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp # or :letter_opener
   # put to false to disable letter-opener
   config.action_mailer.perform_deliveries = true
 
