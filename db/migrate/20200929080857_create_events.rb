@@ -1,6 +1,7 @@
 class CreateEvents < ActiveRecord::Migration[6.0]
+  enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
   def change
-    create_table :events do |t|
+    create_table :events, id: :uuid do |t|
       t.string :name
       t.datetime :date_time
       t.string :location
