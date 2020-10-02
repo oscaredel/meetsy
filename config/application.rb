@@ -9,6 +9,9 @@ Bundler.require(*Rails.groups)
 module Meetsy
   class Application < Rails::Application
     config.generators do |generate|
+      # Use UUID's as primary key for all models
+      generate.orm :active_record, primary_key_type: :uuid
+
       generate.assets false
       generate.helper false
       generate.test_framework :test_unit, fixture: false
