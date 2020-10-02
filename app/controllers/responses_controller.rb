@@ -9,6 +9,7 @@ class ResponsesController < ApplicationController
 
     if @response.save
       redirect_to event_path(@event)
+      ResponseMailer.with(response: @response, event: @event).manage.deliver_now
     else
       render 'events/show'
     end

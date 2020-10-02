@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
     if @event.save
       redirect_to event_path(@event)
-      EventMailer.with(event: @event).event_created_email.deliver_now
+      EventMailer.with(event: @event).manage.deliver_now
     else
       render 'new'
     end
