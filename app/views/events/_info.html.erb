@@ -1,0 +1,36 @@
+<div class="row event-image rounded-top" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                                                                  url('<%= if @event.image.attached?
+                                                                             cl_image_path(@event.image.key, height: 300, width: 400, crop: :fill)
+                                                                           else # show default placeholder-image
+                                                                            "https://images.unsplash.com/photo-1557801200-9a8d901ded2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1374&q=80"
+                                                                           end %>')">
+
+  <div class="col">
+    <h1 class="d-inline"><%= @event.name %></h1>
+    <h5 class="d-inline">
+        <%= link_to icon('fas', 'edit'), edit_event_path(@event), class:'text-warning' %>
+        <%= link_to icon('fas', 'trash'),
+                    event_path(@event),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    class:'text-danger' %>
+    </h5>
+  </div>
+</div>
+
+<div class="row bg-white details py-2 rounded-bottom">
+  <div class="col-md-8 description">
+    <p><%= @event.description %></p>
+  </div>
+  <div class="col-md-4 info">
+    <div class="time my-2">
+      <h4 class="d-inline">🕗</h4> <%= @event.date_time.strftime("%d %B at %H:%M")    %>
+    </div>
+    <div class="place my-2">
+      <h4 class="d-inline">📍</h4> <%= @event.location %>
+    </div>
+    <div class="organized-by my-2">
+      <h4 class="d-inline">👩‍💻</h4> <%= @event.organiser_name %>
+    </div>
+  </div>
+</div>

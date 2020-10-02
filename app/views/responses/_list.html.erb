@@ -1,0 +1,39 @@
+<% if @event.responses.yes.empty? %>
+  <h4 class="d-inline">👋</h4> <p class="d-inline border-bottom">Nobody is attending yet <br><br></p>
+<% else %>
+  <h4 class="d-inline">☝️</h4> <p class="d-inline border-bottom">Also attending are</p>
+<% end %>
+
+<% @event.responses.yes.each do |response| %>
+  <p class="ml-4">
+    <%= response.name %>  <small><%= response.message %></small>
+    <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+    <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
+  </p>
+<% end %>
+
+
+<% unless @event.responses.maybe.empty? %>
+  <h4 class="d-inline">🤞</h4> <p class="d-inline border-bottom">They might be there</p>
+<% end %>
+
+<% @event.responses.maybe.each do |response| %>
+  <p class="ml-4">
+    <%= response.name %>  <small><%= response.message %></small>
+    <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+    <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
+  </p>
+<% end %>
+
+
+<% unless @event.responses.no.empty? %>
+  <h4 class="d-inline">✌️</h4> <p class="d-inline border-bottom">They can't make it</p>
+<% end %>
+
+<% @event.responses.no.each do |response| %>
+  <p class="ml-4">
+    <%= response.name %>  <small><%= response.message %></small>
+    <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+    <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
+  </p>
+<% end %>

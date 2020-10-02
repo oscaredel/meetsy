@@ -1,87 +1,12 @@
-<div class="row event-image rounded-top" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                                                                  url('<%= if @event.image.attached?
-                                                                             cl_image_path(@event.image.key, height: 300, width: 400, crop: :fill)
-                                                                           else # show default placeholder-image
-                                                                            "https://images.unsplash.com/photo-1557801200-9a8d901ded2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1374&q=80"
-                                                                           end %>')">
-
-  <div class="col">
-    <h1 class="d-inline"><%= @event.name %></h1>
-    <h5 class="d-inline">
-        <%= link_to icon('fas', 'edit'), edit_event_path(@event), class:'text-warning' %>
-        <%= link_to icon('fas', 'trash'),
-                    event_path(@event),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" },
-                    class:'text-danger' %>
-    </h5>
-  </div>
-</div>
-
-<div class="row bg-white details py-2 rounded-bottom">
-  <div class="col-md-8 description">
-    <p><%= @event.description %></p>
-  </div>
-  <div class="col-md-4 info">
-    <div class="time my-2">
-      <h4 class="d-inline">🕗</h4> <%= @event.date_time.strftime("%d %B at %H:%M")    %>
-    </div>
-    <div class="place my-2">
-      <h4 class="d-inline">📍</h4> <%= @event.location %>
-    </div>
-    <div class="organized-by my-2">
-      <h4 class="d-inline">👩‍💻</h4> <%= @event.organiser_name %>
-    </div>
-  </div>
-</div>
+<%= render 'events/info' %>
 
 <div class="row bg-white py-2 mt-5 rounded">
   <div class="col-md-8">
-    <%= render 'responses/response_form' %>
+    <%= render 'responses/form' %>
   </div>
 
   <div class="col-md-4">
-
-    <% if @event.responses.yes.empty? %>
-      <p class="d-inline border-bottom">Nobody is attending yet</p>
-    <% else %>
-      <h4 class="d-inline">👋</h4> <p class="d-inline border-bottom">Also attending are</p>
-    <% end %>
-
-    <% @event.responses.yes.each do |response| %>
-      <p class="ml-4">
-        <%= response.name %>  <small><%= response.message %></small>
-        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
-        <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
-      </p>
-    <% end %>
-
-
-    <% unless @event.responses.maybe.empty? %>
-      <h4 class="d-inline">🤞</h4> <p class="d-inline border-bottom">They might be there</p>
-    <% end %>
-
-    <% @event.responses.maybe.each do |response| %>
-      <p class="ml-4">
-        <%= response.name %>  <small><%= response.message %></small>
-        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
-        <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
-      </p>
-    <% end %>
-
-
-    <% unless @event.responses.no.empty? %>
-      <h4 class="d-inline">✌️</h4> <p class="d-inline border-bottom">They can't make it</p>
-    <% end %>
-
-    <% @event.responses.no.each do |response| %>
-      <p class="ml-4">
-        <%= response.name %>  <small><%= response.message %></small>
-        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
-        <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
-      </p>
-    <% end %>
-
+    <%= render 'responses/list' %>
   </div>
 </div>
 
