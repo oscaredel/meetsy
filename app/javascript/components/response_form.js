@@ -1,7 +1,9 @@
 const responseForm = () => {
-  const response_button = document.querySelector(".radio_buttons");
-  response_button.addEventListener("click", (event) => {
+  const response_buttons = document.querySelectorAll(".collection_radio_buttons");
+  response_buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
     document.querySelector(".response-form-inputs").classList.remove('d-none');
+    });
   });
 };
 
