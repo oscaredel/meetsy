@@ -1,7 +1,14 @@
 class ResponsesController < ApplicationController
   before_action :set_event, only: [:create, :edit, :update, :destroy]
-  before_action :set_response, only: [:edit, :update, :destroy]
+  before_action :set_response, only: [:manage, :edit, :update, :destroy]
 
+  def manage
+    # set session uuid of response for edit/delete button for this specific response.
+    session[:uuid] = @response.id
+    @event = @response.event
+
+    redirect_to event_path(@event)
+  end
 
   def create
     @response = Response.new(response_params)

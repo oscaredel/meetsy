@@ -7,14 +7,16 @@
 
   <div class="col">
     <h1 class="d-inline"><%= @event.name %></h1>
-    <h5 class="d-inline">
-        <%= link_to icon('fas', 'edit'), edit_event_path(@event), class:'text-warning' %>
-        <%= link_to icon('fas', 'trash'),
-                    event_path(@event),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" },
-                    class:'text-danger' %>
-    </h5>
+    <% if @event.id == session[:uuid] %>
+      <h5 class="d-inline">
+          <%= link_to icon('fas', 'edit'), edit_event_path(@event), class:'text-warning' %>
+          <%= link_to icon('fas', 'trash'),
+                      event_path(@event),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class:'text-danger' %>
+      </h5>
+    <% end %>
   </div>
 </div>
 

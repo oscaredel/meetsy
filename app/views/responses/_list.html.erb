@@ -7,8 +7,10 @@
 <% @event.responses.yes.each do |response| %>
   <p class="ml-4">
     <%= response.name %>  <small><%= response.message %></small>
-    <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
-    <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
+    <% if response.id == session[:uuid] %>
+      <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+      <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, data: { confirm: "Are you sure you want to remove your response?" }, class:'text-danger' %>
+    <% end %>
   </p>
 <% end %>
 
@@ -20,8 +22,10 @@
 <% @event.responses.maybe.each do |response| %>
   <p class="ml-4">
     <%= response.name %>  <small><%= response.message %></small>
-    <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
-    <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
+    <% if response.id == session[:uuid] %>
+      <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+      <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, data: { confirm: "Are you sure you want to remove your response?" }, class:'text-danger' %>
+    <% end %>
   </p>
 <% end %>
 
@@ -33,7 +37,9 @@
 <% @event.responses.no.each do |response| %>
   <p class="ml-4">
     <%= response.name %>  <small><%= response.message %></small>
-    <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
-    <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, class:'text-danger' %>
+    <% if response.id == session[:uuid] %>
+      <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+      <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, data: { confirm: "Are you sure you want to remove your response?" }, class:'text-danger' %>
+    <% end %>
   </p>
 <% end %>

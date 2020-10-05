@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :events, only: [:show, :create, :edit, :update, :destroy] do
     resources :responses, only: [:create, :edit, :update, :destroy]
   end
+
+  get '/responses/:id/manage', to: 'responses#manage', as: 'manage_response'
 end
