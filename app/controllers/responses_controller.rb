@@ -15,6 +15,7 @@ class ResponsesController < ApplicationController
     @response.event = @event
 
     if @response.save
+      session[:uuid] = @response.id
       redirect_to event_path(@event)
       ResponseMailer.with(response: @response, event: @event).manage.deliver_now
     else

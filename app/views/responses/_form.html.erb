@@ -1,7 +1,7 @@
 <%= simple_form_for [@event, @response] do |f| %>
   <%= f.input :attendance,
               label: "Are you in?" ,
-              collection: [[icon('fas', 'check'), :yes], #, checked: true
+              collection: [[icon('fas', 'check'), :yes], # add ", checked: true" after yes, for default check.
                            [icon('fas', 'minus'), :maybe],
                            [icon('fas', 'times'), :no]],
               as: :radio_buttons,
