@@ -7,7 +7,7 @@
 
   <div class="col">
     <h1 class="d-inline"><%= @event.name %></h1>
-    <% if @event.id == session[:uuid] %>
+    <% if @event.organiser.id == session[:uuid] %>
       <h5 class="d-inline">
           <%= link_to icon('fas', 'edit'), edit_event_path(@event), class:'text-warning' %>
           <%= link_to icon('fas', 'trash'),
@@ -32,7 +32,7 @@
       <h4 class="d-inline">📍</h4> <%= @event.location %>
     </div>
     <div class="organized-by my-2">
-      <h4 class="d-inline">👩‍💻</h4> <%= @event.organiser_name %>
+      <h4 class="d-inline">👩‍💻</h4> <%= @event.organiser.name %>
     </div>
   </div>
 </div>

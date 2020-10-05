@@ -1,0 +1,8 @@
+Welcome to Meetsy.com, <%= @event.organiser.name %>
+===============================================
+
+You have created a new event on Meetsy.
+
+To manage the event, just follow this link: <%= link_to "Manage event", manage_event_url(@event.organiser.id) %>
+
+Thanks for trusting us and have a great day!

@@ -1,7 +1,7 @@
 <% if @event.responses.yes.empty? %>
   <h4 class="d-inline">👋</h4> <p class="d-inline border-bottom">Nobody is attending yet <br><br></p>
 <% else %>
-  <h4 class="d-inline">☝️</h4> <p class="d-inline border-bottom">Also attending are</p>
+  <h4 class="d-inline">☝️</h4> <p class="d-inline border-bottom">They'll join you</p>
 <% end %>
 
 <% @event.responses.yes.each do |response| %>
@@ -9,6 +9,8 @@
     <%= response.name %>  <small><%= response.message %></small>
     <% if response.id == session[:uuid] %>
       <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+    <% end %>
+    <% if response.id == session[:uuid] or @event.organiser.id == session[:uuid] %>
       <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, data: { confirm: "Are you sure you want to remove your response?" }, class:'text-danger' %>
     <% end %>
   </p>
@@ -24,6 +26,8 @@
     <%= response.name %>  <small><%= response.message %></small>
     <% if response.id == session[:uuid] %>
       <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+    <% end %>
+    <% if response.id == session[:uuid] or @event.organiser.id == session[:uuid] %>
       <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, data: { confirm: "Are you sure you want to remove your response?" }, class:'text-danger' %>
     <% end %>
   </p>
@@ -39,6 +43,8 @@
     <%= response.name %>  <small><%= response.message %></small>
     <% if response.id == session[:uuid] %>
       <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+    <% end %>
+    <% if response.id == session[:uuid] or @event.organiser.id == session[:uuid] %>
       <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, data: { confirm: "Are you sure you want to remove your response?" }, class:'text-danger' %>
     <% end %>
   </p>

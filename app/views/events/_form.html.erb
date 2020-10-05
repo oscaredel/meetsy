@@ -1,16 +1,18 @@
-<%= simple_form_for @event do |f| %>
+<%= simple_form_for @event do |e| %>
   <div class="row bg-white rounded py-2">
     <div class="col-md-5">
-        <%= f.input :name %>
-        <%= f.input :date_time %>
-        <%= f.input :location %>
-        <%= f.input :description %>
-        <%= f.input :image, as: :file %>
+        <%= e.input :name %>
+        <%= e.input :date_time %>
+        <%= e.input :location %>
+        <%= e.input :description %>
+        <%= e.input :image, as: :file %>
     </div>
     <div class="col-md-4 offset-2">
-        <%= f.input :organiser_name %>
-        <%= f.input :organiser_email %>
-        <%= f.submit "Save Event", class:"btn btn-primary" %>
+        <%= e.simple_fields_for @organiser do |o| %>
+          <%= o.input :name %>
+          <%= o.input :email %>
+        <% end %>
+        <%= e.submit "Save Event", class:"btn btn-primary" %>
     </div>
   </div>
 <% end %>

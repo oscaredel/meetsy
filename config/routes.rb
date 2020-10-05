@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :responses, only: [:create, :edit, :update, :destroy]
   end
 
+  get '/organisers/:id/manage', to: 'events#manage', as: 'manage_event'
   get '/responses/:id/manage', to: 'responses#manage', as: 'manage_response'
 end
