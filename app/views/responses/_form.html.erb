@@ -6,9 +6,11 @@
                            [icon('fas', 'times'), :no]],
               as: :radio_buttons,
               item_wrapper_class: 'form-check form-check-inline' %>
-  <%= f.input :name %>
-  <%= f.input :message, hint: 'Everybody invited can read it.' %>
-  <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response.' %>
-  <%= f.submit "Send RSVP", class:"btn btn-success d-inline" %>
-  <%= link_to "Cancel", event_path(@event), class:"btn btn-outline-dark d-inline" %>
+  <div class="response-form-inputs d-none">
+    <%= f.input :name %>
+    <%= f.input :message, hint: 'Everybody invited can read it.' %>
+    <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response.' %>
+    <%= f.submit "Send RSVP", class:"btn btn-success d-inline" %>
+    <%= link_to "Cancel", event_path(@event), class:"btn btn-outline-dark d-inline" %>
+  </div>
 <% end %>
