@@ -1,11 +1,10 @@
-<div class="row event-image rounded-top" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+<div class="row">
+  <div class="col p-3 m-3 event-image rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
                                                                   url('<%= if @event.image.attached?
                                                                              cl_image_path(@event.image.key, height: 300, width: 400, crop: :fill)
                                                                            else # show default placeholder-image
                                                                             "https://images.unsplash.com/photo-1557801200-9a8d901ded2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1374&q=80"
                                                                            end %>')">
-
-  <div class="col">
     <h1 class="d-inline"><%= @event.name %></h1>
     <% if @event.organiser.id == session[:uuid] %>
       <h5 class="d-inline">
@@ -20,11 +19,11 @@
   </div>
 </div>
 
-<div class="row bg-white details py-2 rounded-bottom">
-  <div class="col-md-8 description">
+<div class="row details d-flex justify-content-between">
+  <div class="col-md-7 p-3 m-3 bg-white rounded description">
     <p><%= @event.description %></p>
   </div>
-  <div class="col-md-4 info">
+  <div class="col-md-4 p-3 m-3 bg-white rounded info">
     <div class="time my-2">
       <h4 class="d-inline">🕗</h4> <%= @event.starts_at.strftime("%B %d at %H:%M")   %>
     </div>
