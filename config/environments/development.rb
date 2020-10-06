@@ -42,6 +42,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener # or :smtp
   # put to false to disable delivery (by smtp or letter-opener) entirely
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

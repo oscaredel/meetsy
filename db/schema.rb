@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_103042) do
 
   create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.datetime "date_time"
+    t.datetime "starts_at"
     t.string "location"
     t.text "description"
     t.uuid "organiser_id", null: false

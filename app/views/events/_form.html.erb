@@ -1,13 +1,13 @@
 <%= simple_form_for @event do |e| %>
   <div class="row bg-white rounded py-2">
-    <div class="col-md-5">
+    <div class="col-md-8">
         <%= e.input :name %>
-        <%= e.input :date_time %>
+        <%= e.input :starts_at, default: DateTime.now, :order => [:month, :day, :hour, :minute] %>
         <%= e.input :location %>
         <%= e.input :description %>
         <%= e.input :image, as: :file %>
     </div>
-    <div class="col-md-4 offset-2">
+    <div class="col-md-4">
         <%= e.simple_fields_for @organiser do |o| %>
           <%= o.input :name %>
           <%= o.input :email %>

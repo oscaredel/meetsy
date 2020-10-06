@@ -17,8 +17,8 @@ puts "Created organiser with id: #{organiser.id}"
 
 puts ""
 puts 'Creating seed event...'
-event = Event.create(name: "Birthday party",
-                     date_time: DateTime.new(2020,9,1,17),
+event = Event.create(name: "30th🙀 Birthday party",
+                     starts_at: Time.new(2020,9,1,17),
                      location: "At my place",
                      description: "Let's celebrate my 30th year with a banger!!",
                      organiser_id: organiser.id)
