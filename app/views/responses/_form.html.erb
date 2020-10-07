@@ -1,6 +1,6 @@
-<div class="row d-flex justify-content-end">
+<div class="row">
   <div class="col-md-4 p-3 m-3">
-    <h3>Are you in?</h3>
+    <h3 id="response-header">Are you in?</h3>
     <%= simple_form_for [@event, @response] do |f| %>
       <%= f.input :attendance,
                   label: "",
@@ -11,14 +11,24 @@
                   as: :radio_buttons,
                   item_wrapper_class: 'form-check form-check-inline' %>
   </div>
-</div>
-<div class="row d-flex justify-content-end">
-  <div class="col-md-4 p-3 m-3 bg-white rounded response-form-inputs d-none">
-      <%= f.input :name %>
-      <%= f.input :message, hint: 'Everybody invited can read it.' %>
-      <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response.' %>
-      <%= f.submit "Send RSVP", class:"btn btn-success d-inline" %>
-      <%= link_to "Cancel", event_path(@event), class:"btn btn-outline-dark d-inline" %>
+  <div class="col-md-7 p-3 m-3 bg-white rounded response-form-inputs d-none shadow">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <%= f.input :name %>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <%= f.input :message, hint: 'Everybody invited can read it.' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response.' %>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <%= f.submit "Send RSVP", class:"btn btn-success d-inline" %>
+        <%= link_to "Cancel", event_path(@event), class:"btn btn-outline-dark d-inline" %>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>

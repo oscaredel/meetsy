@@ -2,7 +2,15 @@ input[type="radio"] {
   display:none;
 }
 
+#response-header {
+  display:flex;
+  justify-content: center;
+}
+
 .radio_buttons {
+  display: flex;
+  justify-content: center;
+
   label {
     border-radius: 50%;
     height: 48px;
@@ -10,10 +18,10 @@ input[type="radio"] {
     text-align: center;
     transition: 0.5s ease;
     color: white;
-    font-size: 16pt;
+    font-size: 17pt;
     background-color: #ddd;
     line-height: 2em;
-    border: 3px solid white;
+    border: 2px solid white;
   }
 
   label:hover {
@@ -21,17 +29,32 @@ input[type="radio"] {
     background-color:#eee;
   }
 
+    label:hover[for=response_attendance_no] {
+      background-color: $danger;
+    }
+
+    label:hover[for=response_attendance_yes] {
+      background-color: $success;
+    }
+
+    label:hover[for=response_attendance_maybe] {
+      background-color: $warning;
+    }
+
   :checked + {
     label[for=response_attendance_no] {
       background-color: $danger;
+      border: 2px solid black;
     }
 
     label[for=response_attendance_yes] {
       background-color: $green;
+      border: 2px solid black;
     }
 
     label[for=response_attendance_maybe] {
       background-color: $warning;
+      border: 2px solid black;
     }
   }
 }
