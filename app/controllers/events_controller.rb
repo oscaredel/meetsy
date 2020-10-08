@@ -25,6 +25,7 @@ class EventsController < ApplicationController
     @event.organiser = @organiser
 
     if @organiser.save && @event.save
+      session[:uuid] = @organiser.id
       redirect_to event_path(@event)
       OrganiserMailer.with(event: @event).manage.deliver_now
     else
@@ -47,6 +48,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
+    session.delete(:uuid)
     redirect_to :root
   end
 

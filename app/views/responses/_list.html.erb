@@ -6,7 +6,7 @@
 
 <% @event.responses.yes.each do |response| %>
   <p class="ml-4">
-    <%= response.name %>  <small><%= response.message %></small>
+    <%= response.name %><small>"<%= response.message %>"</small>
     <% if response.id == session[:uuid] %>
       <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
     <% end %>
@@ -23,7 +23,7 @@
 
 <% @event.responses.maybe.each do |response| %>
   <p class="ml-4">
-    <%= response.name %>  <small><%= response.message %></small>
+    <%= response.name %><small>"<%= response.message %>"</small>
     <% if response.id == session[:uuid] %>
       <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
     <% end %>
@@ -40,7 +40,7 @@
 
 <% @event.responses.no.each do |response| %>
   <p class="ml-4">
-    <%= response.name %>  <small><%= response.message %></small>
+    <%= response.name %>.<small>".<%= response.message %>"</small>
     <% if response.id == session[:uuid] %>
       <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
     <% end %>

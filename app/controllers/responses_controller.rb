@@ -37,6 +37,7 @@ class ResponsesController < ApplicationController
 
   def destroy
     @response.destroy
+    session.delete(:uuid)
     redirect_to event_path(@event)
   end
 

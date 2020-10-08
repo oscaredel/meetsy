@@ -4,12 +4,12 @@ const responseForm = () => {
   response_buttons.forEach((button) => {
     // if button is clicked
     button.addEventListener("change", (event) => {
-      document.querySelector(".response-form-inputs").classList.remove('d-none');
+      document.querySelector(".response-form-inputs").classList.add('show-form');
     });
 
     // if button is already checked but validations failed
     if (button.checked == true){
-      document.querySelector(".response-form-inputs").classList.remove('d-none');
+      document.querySelector(".response-form-inputs").classList.add('show-form');
     };
   });
 };

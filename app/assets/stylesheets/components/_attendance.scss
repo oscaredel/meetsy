@@ -48,7 +48,7 @@ input[type="radio"] {
     }
 
     label[for=response_attendance_yes] {
-      background-color: $green;
+      background-color: $success;
       border: 2px solid black;
     }
 
@@ -58,3 +58,18 @@ input[type="radio"] {
     }
   }
 }
+
+.hidden-form {
+  max-height: 0px;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+.show-form {
+  max-height: 1000px;
+  visibility: visible;
+  overflow: visible;
+  transition: 0.5s;
+}
+
+

@@ -1,10 +1,10 @@
 .logo-banner .logo {
-  background-color: $green;
+  background-color: $brand-color;
 }
 
 h1, h2, h3 {
   font-weight: 700;
-  color: #f5f5f5;
+  color: white;
   text-shadow: 1px 1px 1px #222,
                1px 2px 1px #333,
                2px 3px 1px #333,
@@ -13,7 +13,7 @@ h1, h2, h3 {
                4px 8px 6px rgba(16,16,16,0.4),
                4px 9px 10px rgba(16,16,16,0.2),
                6px 11px 35px rgba(16,16,16,0.2),
-               6px 13px 60px rgba(16,16,16,0.4);
+               6px 13px 60px rgba(16,16,16,0.2);
 }
 
 .logo-banner p {
@@ -26,5 +26,5 @@ h1, h2, h3 {
 }
 
 path {
-  fill: $green;
+  fill: $brand-color;
 }
