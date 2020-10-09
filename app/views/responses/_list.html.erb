@@ -1,9 +1,38 @@
-<% if @event.responses.yes.empty? %>
-  <h4 class="d-inline">👋</h4> <p class="d-inline border-bottom">Nobody is attending yet <br><br></p>
-<% else %>
-  <h4 class="d-inline">☝️</h4> <p class="d-inline border-bottom">They'll join you</p>
+<% if @event.responses.empty? %>
+  <h4 class="d-inline">👋</h4> <p class="d-inline">Nobody is attending yet</p>
 <% end %>
 
+<% @event.responses.each do |response| %>
+  <div class="row justify-content-between attendance-row">
+    <div class="col-10 attendance-col">
+      <div class="attendance-name">
+        <%= response.name %>
+        <% if response.id == session[:uuid] %>
+        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+      <% end %>
+      <% if response.id == session[:uuid] or @event.organiser.id == session[:uuid] %>
+        <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, data: { confirm: "Are you sure you want to remove your response?" }, class:'text-danger' %>
+      <% end %>
+      </div>
+      <% if not response.message.empty? %>
+        <div class="attendance-message"><small>"<%= response.message %>"</small></div>
+      <% end %>
+    </div>
+    <div class="col-1">
+      <div class="attendance-icon">
+        <% if response.attendance == "yes" %>
+          <%= icon('fas', 'check') %>
+        <% elsif response.attendance == "maybe" %>
+          <%=  icon('fas', 'minus') %>
+        <% elsif response.attendance == "no" %>
+          <%= icon('fas', 'times') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<!--
 <% @event.responses.yes.each do |response| %>
   <p class="ml-4">
     <%= response.name %><small>"<%= response.message %>"</small>
@@ -49,3 +78,4 @@
     <% end %>
   </p>
 <% end %>
+ -->

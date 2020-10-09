@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4 p-3 m-3">
+  <div class="col-md-12 pb-3">
     <h3 id="response-header">Are you in?</h3>
     <%= simple_form_for [@event, @response] do |f| %>
       <%= f.input :attendance,
@@ -11,21 +11,23 @@
                   as: :radio_buttons,
                   item_wrapper_class: 'form-check form-check-inline' %>
   </div>
-  <div class="col-md-7 p-3 m-3 bg-white rounded response-form-inputs hidden-form shadow pane">
+</div>
+<div class="row">
+  <div class="col-md-12 p-3 bg-white rounded response-form-inputs hidden-form shadow pane">
     <h5 class="pane-name">Response</h5>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
+      <div class="col-md-12">
         <%= f.input :name %>
       </div>
-      <div class="col-sm-12 col-md-6">
+      <div class="col-md-12">
         <%= f.input :message, hint: 'Everybody invited can read it.' %>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
+      <div class="col-md-12">
         <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response.' %>
       </div>
-      <div class="col-sm-12 col-md-6">
+      <div class="col-md-12">
         <%= f.submit "Send RSVP", class:"btn btn-success d-inline" %>
         <%= link_to "Cancel", event_path(@event), class:"btn btn-outline-dark d-inline" %>
       </div>

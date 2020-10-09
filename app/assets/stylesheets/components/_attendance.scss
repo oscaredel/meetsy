@@ -72,4 +72,18 @@ input[type="radio"] {
   transition: 0.5s;
 }
 
+.attendance-row {
+  border-bottom: 1px solid black;
+  margin: 0;
+}
 
+.attendance-col {
+  padding: 0;
+  margin: 0;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
