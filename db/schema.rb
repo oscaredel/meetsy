@@ -56,17 +56,18 @@ ActiveRecord::Schema.define(version: 2020_10_01_103042) do
   end
 
   create_table "responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.string "email"
     t.string "message"
     t.integer "attendance"
+    t.uuid "contact_id", null: false
     t.uuid "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["contact_id"], name: "index_responses_on_contact_id"
     t.index ["event_id"], name: "index_responses_on_event_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "contacts"
+  add_foreign_key "responses", "contacts"
   add_foreign_key "responses", "events"
 end

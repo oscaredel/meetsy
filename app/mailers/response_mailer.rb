@@ -4,6 +4,6 @@ class ResponseMailer < ApplicationMailer
   def manage
     @response = params[:response]
     @event = params[:event]
-    mail(to: @response.email, subject: "Manage your Meetsy RSVP for #{@event.name}")
+    mail(to: @response.contact.email, subject: "Manage your Meetsy RSVP for #{@event.name}")
   end
 end

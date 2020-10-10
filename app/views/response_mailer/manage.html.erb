@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>👋 Hi <%= @response.name%></h1>
+    <h1>👋 Hi <%= @response.contact.name %></h1>
     <p>You've responded to an event on Meetsy.</p>
     <p>To see the event details and edit your response, just follow this link: <%= link_to "Manage response", manage_response_url(@response) %></p>
     <p>Thanks for trusting us and have a great day!</p>

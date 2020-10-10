@@ -1,37 +1,42 @@
-<div class="row">
-  <div class="col-md-12 pb-3">
-    <h3 id="response-header">Are you in?</h3>
-    <%= simple_form_for [@event, @response] do |f| %>
-      <%= f.input :attendance,
-                  label: "",
-                  required: false,
-                  collection: [[icon('fas', 'check'), :yes], # add ", checked: true" after yes, for default check.
-                               [icon('fas', 'minus'), :maybe],
-                               [icon('fas', 'times'), :no]],
-                  as: :radio_buttons,
-                  item_wrapper_class: 'form-check form-check-inline' %>
+<%= simple_form_for [@event, @response] do |r| %>
+  <div class="row">
+    <div class="col-md-12 pb-3">
+      <h3 id="response-header">Are you in?</h3>
+        <%= r.input :attendance,
+                    label: "",
+                    required: false,
+                    collection: [[icon('fas', 'check'), :yes], # add ", checked: true" after yes, for default check.
+                                 [icon('fas', 'minus'), :maybe],
+                                 [icon('fas', 'times'), :no]],
+                    as: :radio_buttons,
+                    item_wrapper_class: 'form-check form-check-inline' %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12 p-3 bg-white rounded response-form-inputs hidden-form shadow pane">
-    <h5 class="pane-name">Response</h5>
-    <div class="row">
-      <div class="col-md-12">
-        <%= f.input :name %>
+  <div class="row">
+    <div class="col-md-12 p-3 bg-white rounded response-form-inputs hidden-form shadow pane">
+      <h5 class="pane-name">Response</h5>
+      <div class="row">
+        <%= r.simple_fields_for @contact do |c| %>
+        <div class="col-md-12">
+          <%= c.input :name %>
+        </div>
+        <div class="col-md-12">
+          <%= c.input :email, hint: 'Needed to send you updates and a link to manage your response.' %>
+        </div>
+        <% end %>
       </div>
-      <div class="col-md-12">
-        <%= f.input :message, hint: 'Everybody invited can read it.' %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= r.input :message, hint: 'Everybody invited can read it.' %>
+        </div>
+        <div class="col-md-12">
+          <div class="has-error">
+            <%= r.error_notification message: r.object.errors[:base].to_sentence if r.object.errors[:base].present? %>
+          </div>
+          <%= r.submit "Send RSVP", class:"btn btn-success d-inline" %>
+            <%= link_to "Cancel", event_path(@event), class:"btn btn-outline-dark d-inline" %>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= f.input :email, hint: 'Needed to send you updates and a link to manage your response.' %>
-      </div>
-      <div class="col-md-12">
-        <%= f.submit "Send RSVP", class:"btn btn-success d-inline" %>
-        <%= link_to "Cancel", event_path(@event), class:"btn btn-outline-dark d-inline" %>
-      </div>
-    </div>
-    <% end %>
   </div>
-</div>
+<% end %>

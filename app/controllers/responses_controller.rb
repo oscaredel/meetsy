@@ -4,7 +4,7 @@ class ResponsesController < ApplicationController
 
   def manage
     # set session uuid of response for edit/delete button for this specific response.
-    session[:uuid] = @response.id
+    session[:uuid] = @response.contact.id
     @event = @response.event
 
     redirect_to event_path(@event)
@@ -12,10 +12,13 @@ class ResponsesController < ApplicationController
 
   def create
     @response = Response.new(response_params)
-    @response.event = @event
+    @contact = Contact.new(contact_params)
 
-    if @response.save
-      session[:uuid] = @response.id
+    @response.event = @event
+    @response.contact = @contact
+
+    if @response.save && @contact.save
+      session[:uuid] = @response.contact.id
       redirect_to event_path(@event)
       ResponseMailer.with(response: @response, event: @event).manage.deliver_now
     else
@@ -24,11 +27,13 @@ class ResponsesController < ApplicationController
   end
 
   def edit
+    @contact = @response.contact
     render 'events/show'
   end
 
   def update
-    if @response.update(response_params)
+    @contact = @response.contact
+    if @contact.update(contact_params) && @response.update(response_params)
       redirect_to event_path(@event)
     else
       render 'events/show'
@@ -51,7 +56,11 @@ class ResponsesController < ApplicationController
     @response = Response.find(params[:id])
   end
 
+  def contact_params
+    params.require(:response).require(:contact).permit(:name, :email)
+  end
+
   def response_params
-    params.require(:response).permit(:name, :email, :attendance, :message)
+    params.require(:response).permit(:attendance, :message)
   end
 end

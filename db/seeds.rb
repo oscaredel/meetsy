@@ -12,16 +12,16 @@ puts "Starting Seeds"
 
 puts ""
 puts 'Creating seed organiser'
-organiser = Organiser.create(name: 'Oscar Edel', email: 'edeloscar@gmail.com')
-puts "Created organiser with id: #{organiser.id}"
+organiser = Contact.create(name: 'Oscar Edel', email: 'edeloscar@gmail.com')
+puts "Created organiser-contact with id: #{organiser.id}"
 
 puts ""
 puts 'Creating seed event...'
 event = Event.create(name: "30th🙀 Birthday party",
                      starts_at: Time.new(2020,9,1,17),
                      location: "At my place",
-                     description: "Let's celebrate my 30th year with a banger!!",
-                     organiser_id: organiser.id)
+                     description: "Let's celebrate my 30th year with a banger!! This will be my first birthday party in a long time, so I want it to be the biggest of the year. Who will get the champagne and bitterballs?",
+                     contact_id: organiser.id)
 
 # Attach an image to the event
 balloons_img = URI.open('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80')
@@ -32,33 +32,34 @@ puts "Created event with id: #{event.id}"
 puts ""
 puts 'Creating seed responses for this event...'
 
+contact = Contact.create(name: 'Oscaro', email: 'edeloscar@gmail.com')
 response = Response.create(attendance: 1,
-                           name: "Oscaro",
                            message: "I'll be there",
-                           email: "edeloscar@gmail.com",
-                           event_id: event.id)
-puts "Created #{response.attendance} response with id: #{response.id}"
+                           event_id: event.id,
+                           contact_id: contact.id)
+puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
 
+contact = Contact.create(name: 'Stijn', email: 'stijn@gmail.com')
 response = Response.create(attendance: 1,
-                           name: "Stijn",
                            message: "Party on!!",
-                           email: "stijn@gmail.com",
-                           event_id: event.id)
-puts "Created #{response.attendance} response with id: #{response.id}"
+                           event_id: event.id,
+                           contact_id: contact.id)
+puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
 
+contact = Contact.create(name: 'Jochem', email: 'jochem@gmail.com')
 response = Response.create(attendance: 2,
-                           name: "Jochem",
-                           message: "Cool, checking agenda!",
-                           email: "jochem@gmail.com",
-                           event_id: event.id)
-puts "Created #{response.attendance} response with id: #{response.id}"
+                           message: "Cool! I'll let you know.",
+                           event_id: event.id,
+                           contact_id: contact.id)
+puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
 
+
+contact = Contact.create(name: 'Kamiel', email: 'kamiel@gmail.com')
 response = Response.create(attendance: 0,
-                           name: "Kamiel",
                            message: "Damn, can't make it!",
-                           email: "kamiel@gmail.com",
-                           event_id: event.id)
-puts "Created #{response.attendance} response with id: #{response.id}"
+                           event_id: event.id,
+                           contact_id: contact.id)
+puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
 
 
 puts ""
