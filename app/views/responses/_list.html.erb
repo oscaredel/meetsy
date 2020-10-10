@@ -6,7 +6,9 @@
   <div class="row attendance-row">
     <div class="col-10 attendance-col d-flex justify-content-around">
       <div class="attendance-name d-inline">
+
         <%= response.contact.name %>
+
         <% if response.contact.id == session[:uuid] %>
           <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
         <% end %>
@@ -14,18 +16,21 @@
           <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, data: { confirm: "Are you sure you want to remove your response?" }, class:'text-danger' %>
         <% end %>
       </div>
+
       <div class="attendance-icon d-inline">
         <% if response.attendance == "yes" %>
-        <div class="yes"><%= icon('fas', 'check') %></div>
+          <div class="yes"><%= icon('fas', 'check') %></div>
         <% elsif response.attendance == "maybe" %>
           <div class="maybe"><%=  icon('fas', 'minus') %></div>
         <% elsif response.attendance == "no" %>
           <div class="no"><%= icon('fas', 'times') %></div>
         <% end %>
       </div>
+
       <% unless response.message.empty? %>
         <div class="attendance-message d-inline"><small>"<%= response.message %>"</small></div>
       <% end %>
+
     </div>
   </div>
 <% end %>

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col px-3 py-5 m-3 event-image rounded shadow pane" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+  <div class="col px-3 py-4 mx-3 mb-3 mt-1 event-image rounded shadow pane" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
                                                                   url('<%= if @event.image.attached?
                                                                              cl_image_path(@event.image.key, height: 300, width: 400, crop: :fill)
                                                                            else # show default placeholder-image
@@ -20,6 +20,7 @@
 </div>
 
 <div class="row details d-flex justify-content-between align-items-start">
+
   <div class="col-md-7 p-3 m-3 bg-white rounded description shadow pane">
     <h5 class="pane-name">Storytime</h5>
     <p><%= @event.description %></p>
@@ -32,7 +33,9 @@
       <%= @event.organiser.name %>
     </div>
   </div>
+
   <div class="col-md-4 m-3">
+
     <div class="row">
       <div class="col-md-12 mb-3 bg-white rounded info shadow pane">
         <h5 class="pane-name">Time & Place</h5>
@@ -43,14 +46,17 @@
           <h4 class="d-inline">📍</h4> <%= @event.location %>
         </div>
       </div>
-      <div class="col-md-12 my-3 p-3 bg-white rounded info shadow pane text-center">
+
+      <div class="col-md-12 my-3 py-3 px-1 bg-white rounded info shadow pane text-center">
         <h5 class="pane-name">Share</h5>
         <div>
-          <%= link_to "link", event_url(@event), class:"btn btn-primary" %>
-          <a class="btn btn-primary" href="mailto:?subject=RSVP: Invite to <%= @event.name %>&body=Let me know if you can come! <%= event_url(@event) %>">e-mail</a>
-          <%= link_to "message", event_url(@event), class:"share-native btn btn-success my-1" %>
+          <input type="text" value="<%= event_url(@event) %>" id="copy-link-txt" style="display: none">
+          <a class="copy-link-btn btn btn-primary">link</a>
+          <a class="btn btn-primary" href="mailto:?subject=RSVP: Invite to <%= @event.name %>&body=👋 Hi,%0D%0A%0D%0APlease let me know if you can come to my event!%0D%0A <%= event_url(@event) %> %0D%0A%0D%0AThanks,%0D%0A<%= @event.organiser.name  %>">e-mail</a>
+          <a class="share-native-btn btn btn-primary my-1">message</a>
         </div>
       </div>
     </div>
+
   </div>
 </div>
