@@ -17,7 +17,7 @@ function copyLink() {
     copyText.select();
     copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");
-    copyLinkBtn.innerHTML= "copied"
+    copyLinkBtn.innerHTML = "<i class='fas fa-clipboard-check'></i>";
   });
 }
 

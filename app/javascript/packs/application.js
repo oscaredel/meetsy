@@ -37,4 +37,9 @@ document.addEventListener('turbolinks:load', () => {
   responseForm();
   shareNative();
   copyLink();
+
+// enable tooltips
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 });

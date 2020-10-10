@@ -22,7 +22,9 @@ puts 'Creating seed event...'
 event = Event.create(name: "30th🙀 Birthday party",
                      starts_at: Time.new(2020,6,18,21,59),
                      location: "At my place",
-                     description: "Let's celebrate my 30th year with a banger!! This will be my first birthday party in a long time, so I want it to be the biggest of the year. Who will get the champagne and bitterballs?",
+                     description: "Let's celebrate my 30th year with a banger!! This will be my first birthday party in a long time, so I want it to be the biggest of the year.\n
+                                   Bring your own booze. Who will get the champagne and bitterballs? And can we also get some pizza?\n
+                                   See you soon!",
                      contact_id: organiser.id)
 
 # Attach an image to the event
