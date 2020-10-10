@@ -67,11 +67,14 @@ input[type="radio"] {
   transition: 0.5s;
 }
 
-.attendance-row {
-  // border-bottom: 1px solid black;
+.attendance-container{
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1fr 4fr;
 }
 
 .attendance-icon {
+  place-self: stretch;
+  text-align: center;
   .yes {
     background: $success;
   }
@@ -81,6 +84,10 @@ input[type="radio"] {
   .no {
     background: $danger;
   }
+}
+.attendance-message {
+  padding-left: 8px;
+  text-overflow: clip;
 }
 
 .truncate {
