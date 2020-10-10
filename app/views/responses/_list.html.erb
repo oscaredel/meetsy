@@ -3,12 +3,13 @@
 <% end %>
 
 <div class="attendance-container">
+
   <% @event.responses.each do |response| %>
+
     <div class="attendance-name">
-
       <%= response.contact.name %>
-
     </div>
+
     <div class="attendance-buttons">
       <% if response.contact.id == session[:uuid] %>
         <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
@@ -34,4 +35,5 @@
     <% end %>
 
   <% end %>
+
 </div>
