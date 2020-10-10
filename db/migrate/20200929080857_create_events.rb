@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.datetime :starts_at
       t.string :location
       t.text :description
-      t.references :organiser, null: false, foreign_key: true, type: :uuid
+      t.references :contact, null: false, foreign_key: true, type: :uuid
 
       t.timestamps
     end

@@ -3,9 +3,9 @@ class EventsController < ApplicationController
 
   def manage
     # set session uuid of response for edit/delete button for this specific response.
-    @organiser = Organiser.find(params[:id])
+    @organiser = Contact.find(params[:id])
     session[:uuid] = @organiser.id
-    @event = Event.find_by(organiser_id: @organiser.id)
+    @event = Event.find_by(contact_id: @organiser.id)
 
     redirect_to event_path(@event)
   end
@@ -15,12 +15,12 @@ class EventsController < ApplicationController
   end
 
   def new
-    @organiser = Organiser.new
+    @organiser = Contact.new
     @event = Event.new
   end
 
   def create
-    @organiser = Organiser.new(organiser_params)
+    @organiser = Contact.new(contact_params)
     @event = Event.new(event_params)
     @event.organiser = @organiser
 
@@ -39,7 +39,7 @@ class EventsController < ApplicationController
 
   def update
     @organiser = @event.organiser
-    if @organiser.update(organiser_params) && @event.update(event_params)
+    if @organiser.update(contact_params) && @event.update(event_params)
       redirect_to event_path(@event)
     else
       render 'new'
@@ -58,8 +58,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def organiser_params
-    params.require(:event).require(:organiser).permit(:name, :email)
+  def contact_params
+    params.require(:event).require(:contact).permit(:name, :email)
   end
 
   def event_params

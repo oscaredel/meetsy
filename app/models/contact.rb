@@ -1,4 +1,4 @@
-class Organiser < ApplicationRecord
+class Contact < ApplicationRecord
   has_one :event, dependent: :destroy
 
   validates :name, :email, presence: true

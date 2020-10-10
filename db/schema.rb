@@ -37,22 +37,22 @@ ActiveRecord::Schema.define(version: 2020_10_01_103042) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.datetime "starts_at"
     t.string "location"
     t.text "description"
-    t.uuid "organiser_id", null: false
+    t.uuid "contact_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["organiser_id"], name: "index_events_on_organiser_id"
-  end
-
-  create_table "organisers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contact_id"], name: "index_events_on_contact_id"
   end
 
   create_table "responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -67,6 +67,6 @@ ActiveRecord::Schema.define(version: 2020_10_01_103042) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "events", "organisers"
+  add_foreign_key "events", "contacts"
   add_foreign_key "responses", "events"
 end
