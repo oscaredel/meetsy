@@ -13,12 +13,14 @@ puts "Starting Seeds"
 puts ""
 puts 'Creating seed organiser'
 organiser = Contact.create(name: 'Oscar Edel', email: 'edeloscar@gmail.com')
+avatar_img = URI.open('https://avatars0.githubusercontent.com/u/30212388?s=460&u=5e05701e2830ddd55ccd5408ed0b7f7151ff257d&v=4')
+organiser.image.attach(io: avatar_img, filename: 'oscar.png', content_type: 'image/png')
 puts "Created organiser-contact with id: #{organiser.id}"
 
 puts ""
 puts 'Creating seed event...'
 event = Event.create(name: "30th🙀 Birthday party",
-                     starts_at: Time.new(2020,9,1,17),
+                     starts_at: Time.new(2020,6,18,21,59),
                      location: "At my place",
                      description: "Let's celebrate my 30th year with a banger!! This will be my first birthday party in a long time, so I want it to be the biggest of the year. Who will get the champagne and bitterballs?",
                      contact_id: organiser.id)

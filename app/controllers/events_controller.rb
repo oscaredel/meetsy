@@ -60,7 +60,7 @@ class EventsController < ApplicationController
   end
 
   def contact_params
-    params.require(:event).require(:contact).permit(:name, :email)
+    params.require(:event).require(:contact).permit(:name, :email, :image)
   end
 
   def event_params

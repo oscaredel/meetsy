@@ -2,11 +2,6 @@ input[type="radio"] {
   display:none;
 }
 
-#response-header {
-  display:flex;
-  justify-content: center;
-}
-
 .radio_buttons {
   display: flex;
   justify-content: center;
@@ -73,13 +68,19 @@ input[type="radio"] {
 }
 
 .attendance-row {
-  border-bottom: 1px solid black;
-  margin: 0;
+  // border-bottom: 1px solid black;
 }
 
-.attendance-col {
-  padding: 0;
-  margin: 0;
+.attendance-icon {
+  .yes {
+    background: $success;
+  }
+  .maybe {
+    background: $warning;
+  }
+  .no {
+    background: $danger;
+  }
 }
 
 .truncate {

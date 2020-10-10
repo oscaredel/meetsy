@@ -5,12 +5,13 @@
         <%= e.input :starts_at, default: DateTime.now, :order => [:month, :day, :hour, :minute] %>
         <%= e.input :location %>
         <%= e.input :description %>
-        <%= e.input :image, as: :file %>
+        <%= e.input :image, as: :file, label: "Banner image" %>
     </div>
     <div class="col-md-4 p-3 m-3 bg-white shadow rounded">
         <%= e.simple_fields_for @organiser do |o| %>
           <%= o.input :name %>
           <%= o.input :email %>
+          <%= o.input :image, as: :file, label: "Optional avatar" %>
         <% end %>
         <%= e.submit "Save Event", class:"btn btn-success" %>
     </div>
