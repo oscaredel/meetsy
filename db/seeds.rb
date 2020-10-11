@@ -34,7 +34,7 @@ puts "Created event with id: #{event.id}"
 
 
 puts ""
-puts 'Creating seed responses for this event...'
+puts 'Creating seed responses and contacts for this event...'
 
 contact = Contact.create(name: 'Oscaro', email: 'edeloscar@gmail.com')
 response = Response.create(attendance: 1,
@@ -67,4 +67,16 @@ puts "Created #{response.attendance} response with id: #{response.id}, for conta
 
 
 puts ""
+
+puts "Creating seed updates for this event..."
+update = Update.create(text: "I bought some discolights and a dj-panel! 🕺 Shall I bring them or do you have your own?",
+                       contact_id: contact.id,
+                       event_id: event.id)
+puts "Created update from #{contact.name}: #{update.id}"
+
+update = Update.create(text: "@Everybody, FYI, time and place has been changed.",
+                       contact_id: organiser.id,
+                       event_id: event.id)
+puts "Created update from #{organiser.name}: #{update.id}"
+
 puts 'Finished seeds!'

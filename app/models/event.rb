@@ -3,6 +3,7 @@ class Event < ApplicationRecord
 
   belongs_to :organiser, dependent: :destroy, foreign_key: "contact_id", class_name: "Contact"
   has_many :responses, dependent: :destroy
+  has_many :updates, dependent: :destroy
 
   validates :name, :description, presence: true
 end

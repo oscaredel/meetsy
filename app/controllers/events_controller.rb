@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   def show
     @response = Response.new
     @contact = Contact.new
+    @update = Update.new
   end
 
   def new

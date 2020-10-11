@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_103042) do
+ActiveRecord::Schema.define(version: 2020_10_11_125155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -66,8 +66,20 @@ ActiveRecord::Schema.define(version: 2020_10_01_103042) do
     t.index ["event_id"], name: "index_responses_on_event_id"
   end
 
+  create_table "updates", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "text"
+    t.uuid "event_id", null: false
+    t.uuid "contact_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contact_id"], name: "index_updates_on_contact_id"
+    t.index ["event_id"], name: "index_updates_on_event_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "contacts"
   add_foreign_key "responses", "contacts"
   add_foreign_key "responses", "events"
+  add_foreign_key "updates", "contacts"
+  add_foreign_key "updates", "events"
 end

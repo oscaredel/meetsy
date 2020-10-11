@@ -68,4 +68,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # Allow ngrok tunnel to localhost in development
+  config.hosts << /[a-z0-9]+\.ngrok\.io/
+
 end
