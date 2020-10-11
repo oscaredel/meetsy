@@ -1,5 +1,3 @@
 <% @event.updates.each do |update| %>
-  <p>
-    <%= update.text %><small> - <%= update.contact.name %> - <%= time_ago_in_words(update.created_at) %> ago</small>
-  </p>
+  <p><%= update.text %><small> - <%= update.contact.name %> - <%= time_ago_in_words(update.created_at) %> ago</small></p>
 <% end %>
