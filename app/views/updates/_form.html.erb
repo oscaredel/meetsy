@@ -1,7 +1,7 @@
 <% if session[:uuid] %>
 
   <%= simple_form_for [@event, @update] do |u| %>
-    <%= u.input :text %>
+    <%= u.input :text, label: false, placeholder: "Say something" %>
     <%= u.submit "Send", class:"btn btn-success" %>
   <% end %>
 

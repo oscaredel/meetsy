@@ -13,11 +13,12 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     @contact = Contact.new(contact_params)
+    @update = Update.new
 
     @response.event = @event
     @response.contact = @contact
 
-    if @response.save && @contact.save
+    if @contact.save && @response.save
       session[:uuid] = @response.contact.id
       redirect_to event_path(@event)
       ResponseMailer.with(response: @response, event: @event).manage.deliver_now
@@ -28,6 +29,7 @@ class ResponsesController < ApplicationController
 
   def edit
     @contact = @response.contact
+    @update = Update.new
     render 'events/show'
   end
 

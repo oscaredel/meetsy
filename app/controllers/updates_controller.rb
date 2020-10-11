@@ -2,8 +2,12 @@ class UpdatesController < ApplicationController
 
   def create
     @update = Update.new(update_params)
-    @update.event = Event.find(params[:event_id])
-    @update.contact = Contact.find(session[:uuid])
+    @event = Event.find(params[:event_id])
+    @contact = Contact.find(session[:uuid])
+    @response = Response.new
+
+    @update.event = @event
+    @update.contact = @contact
 
     if @update.save
       redirect_to event_path(@update.event)
