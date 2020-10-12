@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :events, only: [:show, :create, :edit, :update, :destroy] do
     resources :responses, only: [:create, :edit, :update, :destroy]
-    resources :updates, only: [:create, :edit, :update, :destroy]
+    resources :updates, only: [:create, :destroy]
   end
 
   get '/organisers/:id/manage', to: 'events#manage', as: 'manage_event'

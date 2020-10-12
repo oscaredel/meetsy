@@ -1,3 +1,10 @@
 <% @event.updates.each do |update| %>
-  <p><%= update.text %><small> - <%= update.contact.name %> - <%= time_ago_in_words(update.created_at) %> ago</small></p>
+  <p>
+    <%= update.text %>
+    <small>
+      <%= link_to icon('fas', 'trash'), event_update_path(@event, update), method: :delete, data: { confirm: "Are you sure you want to remove your update?" }, class:'text-danger' %>
+      - <%= update.contact.name %>
+      - <%= time_ago_in_words(update.created_at) %> ago
+    </small>
+  </p>
 <% end %>

@@ -16,6 +16,12 @@ class UpdatesController < ApplicationController
     end
   end
 
+  def destroy
+    @update = Update.find(params[:id])
+    @response.destroy
+    redirect_to event_path(@event)
+  end
+
   private
 
   def update_params

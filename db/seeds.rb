@@ -22,8 +22,9 @@ puts 'Creating seed event...'
 event = Event.create(name: "30th🙀 Birthday party",
                      starts_at: Time.new(2020,6,18,21,59),
                      location: "At my place",
-                     description: "Let's celebrate my 30th year with a banger!! This will be my first birthday party in a long time, so I want it to be the biggest of the year.\n
-                                   Bring your own booze. Who will get the champagne and bitterballs? And can we also get some pizza?\n
+                     description: "Hi party people,✌️\n
+                                   Let's celebrate my 30th year with a banger!💥  This will be my first birthday party in a long time, so I want it to be the biggest of the year.
+                                   Bring your own booze. Who will get the champagne and bitterballs? And can we also get some 🍕🍕?\n
                                    See you soon!",
                      contact_id: organiser.id)
 
@@ -36,21 +37,21 @@ puts "Created event with id: #{event.id}"
 puts ""
 puts 'Creating seed responses and contacts for this event...'
 
-contact = Contact.create(name: 'Oscaro', email: 'edeloscar@gmail.com')
+kamiel = Contact.create(name: 'Kamiel', email: 'edeloscar@gmail.com')
 response = Response.create(attendance: 1,
-                           message: "I'll be there",
+                           message: "I'll 🐝 there",
                            event_id: event.id,
-                           contact_id: contact.id)
+                           contact_id: kamiel.id)
 puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
 
-contact = Contact.create(name: 'Stijn', email: 'stijn@gmail.com')
+contact = Contact.create(name: 'Stijn', email: 'stijn@meetsymail.com')
 response = Response.create(attendance: 1,
                            message: "Party on!!",
                            event_id: event.id,
                            contact_id: contact.id)
 puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
 
-contact = Contact.create(name: 'Jochem', email: 'jochem@gmail.com')
+contact = Contact.create(name: 'Jochem', email: 'jochem@meetsymail.com')
 response = Response.create(attendance: 2,
                            message: "Cool! I'll let you know.",
                            event_id: event.id,
@@ -58,7 +59,7 @@ response = Response.create(attendance: 2,
 puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
 
 
-contact = Contact.create(name: 'Kamiel', email: 'kamiel@gmail.com')
+contact = Contact.create(name: 'Luc', email: 'luc@meetsymail.com')
 response = Response.create(attendance: 0,
                            message: "Damn, can't make it!",
                            event_id: event.id,
@@ -70,9 +71,9 @@ puts ""
 
 puts "Creating seed updates for this event..."
 update = Update.create(text: "I bought some discolights and a dj-panel! 🕺 Shall I bring them or do you have your own?",
-                       contact_id: contact.id,
+                       contact_id: kamiel.id,
                        event_id: event.id)
-puts "Created update from #{contact.name}: #{update.id}"
+puts "Created update from #{kamiel.name}: #{update.id}"
 
 update = Update.create(text: "@Everybody, FYI, time and place has been changed.",
                        contact_id: organiser.id,
