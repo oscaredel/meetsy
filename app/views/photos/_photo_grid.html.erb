@@ -1,9 +1,11 @@
 <div class="photos-container">
 
-  <%= simple_form_for [@event, @photo] do |p| %>
-    <div class="photo-link">
-      <%= p.input :image, as: :file, label: icon('fas', 'plus'), input_html: { onchange: 'this.form.submit();' }%>
-    </div>
+  <% if session[:uuid] %>
+    <%= simple_form_for [@event, @photo] do |p| %>
+      <div class="photo-link">
+        <%= p.input :image, as: :file, label: icon('fas', 'plus'), input_html: { onchange: 'this.form.submit();' }%>
+      </div>
+    <% end %>
   <% end %>
 
   <% @photos.each do |photo| %>
