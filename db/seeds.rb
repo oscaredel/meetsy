@@ -29,8 +29,8 @@ event = Event.create(name: "30th🙀 Birthday party",
                      contact_id: organiser.id)
 
 # Attach an image to the event
-balloons_img = URI.open('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80')
-event.image.attach(io: balloons_img, filename: 'balloons.png', content_type: 'image/png')
+confetti_img = URI.open('https://www.superiorcelebrations.com/blog/wp-content/uploads/2016/02/color-confetti-at-night.jpg')
+event.image.attach(io: confetti_img, filename: 'confetti.png', content_type: 'image/png')
 puts "Created event with id: #{event.id}"
 
 
@@ -42,42 +42,67 @@ response = Response.create(attendance: 1,
                            message: "I'll 🐝 there",
                            event_id: event.id,
                            contact_id: kamiel.id)
-puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
+puts "Created #{response.attendance} response with id: #{response.contact.name}, with id:: #{response.id}"
 
-contact = Contact.create(name: 'Stijn', email: 'stijn@meetsymail.com')
+stijn = Contact.create(name: 'Stijn', email: 'stijn@meetsymail.com')
 response = Response.create(attendance: 1,
                            message: "Party on!!",
                            event_id: event.id,
-                           contact_id: contact.id)
-puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
+                           contact_id: stijn.id)
+puts "Created #{response.attendance} response with id: #{response.contact.name}, for contact: #{response.id}"
 
-contact = Contact.create(name: 'Jochem', email: 'jochem@meetsymail.com')
+jochem = Contact.create(name: 'Jochem', email: 'jochem@meetsymail.com')
 response = Response.create(attendance: 2,
                            message: "Cool! I'll let you know.",
                            event_id: event.id,
-                           contact_id: contact.id)
-puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
+                           contact_id: jochem.id)
+puts "Created #{response.attendance} response with id: #{response.contact.name}, for contact: #{response.id}"
 
 
-contact = Contact.create(name: 'Luc', email: 'luc@meetsymail.com')
+luc = Contact.create(name: 'Luc', email: 'luc@meetsymail.com')
 response = Response.create(attendance: 0,
                            message: "Damn, can't make it!",
                            event_id: event.id,
-                           contact_id: contact.id)
-puts "Created #{response.attendance} response with id: #{response.id}, for contact: #{response.contact.id}"
+                           contact_id: luc.id)
+puts "Created #{response.attendance} response with id: #{response.contact.name}, for contact: #{response.id}"
 
 
 puts ""
-
 puts "Creating seed updates for this event..."
+
 update = Update.create(text: "I bought some discolights and a dj-panel! 🕺 Shall I bring them or do you have your own?",
                        contact_id: kamiel.id,
                        event_id: event.id)
-puts "Created update from #{kamiel.name}: #{update.id}"
+puts "Created update from #{update.contact.name}: #{update.id}"
 
 update = Update.create(text: "@Everybody, FYI, time and place has been changed.",
                        contact_id: organiser.id,
                        event_id: event.id)
-puts "Created update from #{organiser.name}: #{update.id}"
+puts "Created update from #{update.contact.name}: #{update.id}"
 
+
+puts ""
+puts "Creating seed snapbox photo's"
+
+pizza_img = URI.open('https://4.bp.blogspot.com/-SMftXEPe5GA/VXsH7AClwGI/AAAAAAAAATI/GgNToUi4Hzw/s1600/IMG_8148.JPG')
+photo = Photo.create(contact_id: organiser.id, event_id: event.id)
+photo.image.attach(io: pizza_img, filename: 'pizza.png', content_type: 'image/png')
+puts "Created photo from #{photo.contact.name}: #{photo.id}"
+
+drinks_img = URI.open('https://media-cdn.tripadvisor.com/media/photo-s/05/59/1c/fd/viking-pub-crawl-dublin.jpg')
+photo = Photo.create(contact_id: kamiel.id, event_id: event.id)
+photo.image.attach(io: drinks_img, filename: 'drinks.png', content_type: 'image/png')
+puts "Created photo from #{photo.contact.name}: #{photo.id}"
+
+party_img = URI.open('https://i.pinimg.com/originals/40/86/a5/4086a586a88512093127d30738338480.jpg')
+photo = Photo.create(contact_id: luc.id, event_id: event.id)
+photo.image.attach(io: party_img, filename: 'party.png', content_type: 'image/png')
+puts "Created photo from #{photo.contact.name}: #{photo.id}"
+
+guys_img = URI.open('https://bloximages.chicago2.vip.townnews.com/thesunchronicle.com/content/tncms/assets/v3/editorial/9/f2/9f2ac069-fa99-53d7-bca7-5fe11df03f20/4fbd0d141e512.image.jpg?resize=400%2C225')
+photo = Photo.create(contact_id: kamiel.id, event_id: event.id)
+photo.image.attach(io: guys_img, filename: 'guys.png', content_type: 'image/png')
+puts "Created photo from #{photo.contact.name}: #{photo.id}"
+
+puts ""
 puts 'Finished seeds!'

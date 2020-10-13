@@ -1,0 +1,15 @@
+<div class="photos-container">
+
+  <%= simple_form_for [@event, @photo] do |p| %>
+    <div class="photo-link">
+      <%= p.input :image, as: :file, label: icon('fas', 'plus'), input_html: { onchange: 'this.form.submit();' }%>
+    </div>
+  <% end %>
+
+  <% @photos.each do |photo| %>
+    <%= link_to event_photo_path(@event, photo) do %>
+      <div class="photo-item" style="background-image: url(<%= cl_image_path(photo.image.key) %>); background-position:cover;"></div>
+    <% end %>
+  <% end %>
+
+</div>

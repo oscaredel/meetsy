@@ -1,0 +1,47 @@
+.photos-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  // grid-template-rows: repeat(3, 10vw);
+  grid-gap: 4px;
+}
+
+.photos-container div::before {
+  content: "";
+  padding-bottom: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.photo-item {
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+.photo-link {
+  border: 3px dotted lightgreen;
+  border-radius: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10%;
+
+  .form-group {
+    margin: 0;
+    line-height: 0;
+  }
+
+  label {
+    font-size: 18px;
+    color: lightgreen;
+    cursor: pointer;
+    z-index: 1;
+    padding: 1.5em;
+    margin: -1.5em;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}

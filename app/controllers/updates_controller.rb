@@ -1,9 +1,8 @@
 class UpdatesController < ApplicationController
-
   def create
-    @update = Update.new(update_params)
     @event = Event.find(params[:event_id])
     @contact = Contact.find(session[:uuid])
+    @update = Update.new(update_params)
     @response = Response.new
 
     @update.event = @event

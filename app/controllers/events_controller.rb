@@ -14,6 +14,8 @@ class EventsController < ApplicationController
     @response = Response.new
     @contact = Contact.new
     @update = Update.new
+    @photo = Photo.new
+    @photos = @event.photos.take(5)
   end
 
   def new

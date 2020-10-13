@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_11_125155) do
+ActiveRecord::Schema.define(version: 2020_10_12_202956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 2020_10_11_125155) do
     t.index ["contact_id"], name: "index_events_on_contact_id"
   end
 
+  create_table "photos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "event_id", null: false
+    t.uuid "contact_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contact_id"], name: "index_photos_on_contact_id"
+    t.index ["event_id"], name: "index_photos_on_event_id"
+  end
+
   create_table "responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "message"
     t.integer "attendance"
@@ -78,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_10_11_125155) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "contacts"
+  add_foreign_key "photos", "contacts"
+  add_foreign_key "photos", "events"
   add_foreign_key "responses", "contacts"
   add_foreign_key "responses", "events"
   add_foreign_key "updates", "contacts"

@@ -13,3 +13,7 @@ heroku run rails db:create db:migrate db:seed
 heroku run rails
 
 heroku open
+
+
+
+Database design: https://kitt.lewagon.com/db/15416
