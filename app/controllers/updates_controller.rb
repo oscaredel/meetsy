@@ -4,6 +4,8 @@ class UpdatesController < ApplicationController
     @contact = Contact.find(session[:uuid])
     @update = Update.new(update_params)
     @response = Response.new
+    @photo = Photo.new
+    @photos = @event.photos.take(5)
 
     @update.event = @event
     @update.contact = @contact

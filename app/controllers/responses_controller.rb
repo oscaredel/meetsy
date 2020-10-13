@@ -14,6 +14,8 @@ class ResponsesController < ApplicationController
     @response = Response.new(response_params)
     @contact = Contact.new(contact_params)
     @update = Update.new
+    @photo = Photo.new
+    @photos = @event.photos.take(5)
 
     @response.event = @event
     @response.contact = @contact
@@ -30,6 +32,8 @@ class ResponsesController < ApplicationController
   def edit
     @contact = @response.contact
     @update = Update.new
+    @photo = Photo.new
+    @photos = @event.photos.take(5)
     render 'events/show'
   end
 
