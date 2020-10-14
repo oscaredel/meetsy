@@ -16,3 +16,12 @@ a, a:hover {
 .background-brand {
   background-color: $brand-color;
 }
+
+// To not display horizontal scrollbar when vertical scroll bar is present. Because of the svg width:100vw;
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}

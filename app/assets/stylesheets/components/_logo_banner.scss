@@ -39,11 +39,6 @@ path {
     margin-left: -50vw;
     margin-right: -50vw;
     bottom: -1px;
-  overflow-x: hidden;
   }
 }
 
-// To not display horizontal scrollbar when vertical scroll bar is present. Because of the svg width:100vw;
-html {
-  overflow-x: hidden;
-}
