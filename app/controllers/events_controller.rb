@@ -21,6 +21,7 @@ class EventsController < ApplicationController
   def new
     @organiser = Contact.new
     @event = Event.new
+    @event.organiser = @organiser
   end
 
   def create
