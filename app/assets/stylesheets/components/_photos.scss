@@ -20,7 +20,7 @@
 
 
 .photo-link {
-  border: 3px dotted lightgreen;
+  border: 3px dotted $brand-color;
   border-radius: 25%;
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@
 
   label {
     font-size: 18px;
-    color: lightgreen;
+    color: $brand-color;
     cursor: pointer;
     z-index: 1;
     padding: 1.5em;

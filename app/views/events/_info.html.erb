@@ -1,27 +1,6 @@
-<div class="row">
-  <div class="col px-3 py-4 mx-3 mb-3 mt-1 event-image rounded shadow pane" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                                                                  url('<%= if @event.image.attached?
-                                                                             cl_image_path(@event.image.key)
-                                                                           else # show default placeholder-image
-                                                                            "https://images.unsplash.com/photo-1557801200-9a8d901ded2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1374&q=80"
-                                                                           end %>')">
-    <h1 id="event-title" class="d-inline"><%= @event.name %></h1>
-    <% if @event.organiser.id == session[:uuid] %>
-      <h5 class="d-inline">
-          <%= link_to icon('fas', 'edit'), edit_event_path(@event), class:'text-warning' %>
-          <%= link_to icon('fas', 'trash'),
-                      event_path(@event),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" },
-                      class:'text-danger' %>
-      </h5>
-    <% end %>
-  </div>
-</div>
-
 <div class="row details d-flex justify-content-between align-items-start">
 
-  <div class="col-md-7 p-3 m-3 bg-white rounded description shadow pane">
+  <div class="col-md-7 p-3 m-3 bg-dark rounded description shadow pane">
     <h5 class="pane-name">Storytime</h5>
     <p style="white-space: pre-line;"><%= @event.description %></p>
     <div class="organized-by my-2">
@@ -37,7 +16,7 @@
   <div class="col-md-4 m-3">
 
     <div class="row">
-      <div class="col-md-12 mb-3 p-3 bg-white rounded info shadow pane">
+      <div class="col-md-12 mb-3 p-3 bg-dark rounded info shadow pane">
         <h5 class="pane-name">Time & Place</h5>
         <div class="time my-2">
           <h4 class="d-inline">🕗</h4> <%= @event.starts_at.strftime("%B %d at %H:%M") %>
@@ -47,7 +26,7 @@
         </div>
       </div>
 
-      <div class="col-md-12 my-3 pt-3 px-2 pane bg-white rounded shadow text-center">
+      <div class="col-md-12 my-3 pt-3 px-2 pane bg-dark rounded shadow text-center">
         <h5 class="pane-name">Share</h5>
         <div class="">
           <div><input type="text" value="<%= event_url(@event) %>" id="copy-link-txt"></div>

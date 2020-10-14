@@ -29,7 +29,7 @@ event = Event.create(name: "30th🙀 Birthday party",
                      contact_id: organiser.id)
 
 # Attach an image to the event
-confetti_img = URI.open('https://www.superiorcelebrations.com/blog/wp-content/uploads/2016/02/color-confetti-at-night.jpg')
+confetti_img = URI.open('https://media.npr.org/assets/img/2012/03/01/pxd-005461rv4a2_wide-37bf7de22cdef405c380c854f3744edbabd1cc41.jpg')
 event.image.attach(io: confetti_img, filename: 'confetti.png', content_type: 'image/png')
 puts "Created event with id: #{event.id}"
 

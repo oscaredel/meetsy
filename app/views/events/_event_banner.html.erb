@@ -1,0 +1,37 @@
+<div class="background-brand">
+
+  <div class="container banner-section">
+    <div class="row">
+      <div class="col px-3 pt-4 mx-3 mt-1 event-image rounded pane" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                                                                      url('<%= if @event.image.attached?
+                                                                                 cl_image_path(@event.image.key)
+                                                                               else # show default placeholder-image
+                                                                                "https://images.unsplash.com/photo-1557801200-9a8d901ded2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1374&q=80"
+                                                                               end %>')">
+        <h1 id="event-title" class="d-inline"><%= @event.name %></h1>
+        <% if @event.organiser.id == session[:uuid] %>
+          <h5 class="d-inline">
+              <%= link_to icon('fas', 'edit'), edit_event_path(@event), class:'text-warning' %>
+              <%= link_to icon('fas', 'trash'),
+                          event_path(@event),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" },
+                          class:'text-danger' %>
+          </h5>
+        <% end %>
+        <br>
+        <br>
+        <br>
+        <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+          <defs>
+            <filter id="shadow">
+              <feDropShadow dx="0" dy="-8" stdDeviation="10"/>
+            </filter>
+          </defs>
+          <path style="filter:url(#shadow);" fill-opacity="1" d="M0,64L48,80C96,96,192,128,288,122.7C384,117,480,75,576,90.7C672,107,768,181,864,218.7C960,256,1056,256,1152,240C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
