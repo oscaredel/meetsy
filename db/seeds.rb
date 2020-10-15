@@ -77,7 +77,7 @@ puts "Creating seed snapbox photo's"
 photo_data = [{filename: "pizza.jpg", contact_id: organiser.id, url: "https://4.bp.blogspot.com/-SMftXEPe5GA/VXsH7AClwGI/AAAAAAAAATI/GgNToUi4Hzw/s1600/IMG_8148.JPG"},
               {filename: "drinks.jpg", contact_id: Contact.find_by(name: "Kamiel").id, url: "https://media-cdn.tripadvisor.com/media/photo-s/05/59/1c/fd/viking-pub-crawl-dublin.jpg"},
               {filename: "party.jpg", contact_id: Contact.find_by(name: "Luc").id, url: "https://i.pinimg.com/originals/40/86/a5/4086a586a88512093127d30738338480.jpg"},
-              {filename: "guys.jpg", contact_id: Contact.find_by(name: "Kamiel").id, url: "https://i.pinimg.com/originals/40/86/a5/4086a586a88512093127d30738338480.jpg"}]
+              {filename: "guys.jpg", contact_id: Contact.find_by(name: "Kamiel").id, url: "https://bloximages.chicago2.vip.townnews.com/thesunchronicle.com/content/tncms/assets/v3/editorial/9/f2/9f2ac069-fa99-53d7-bca7-5fe11df03f20/4fbd0d141e512.image.jpg?resize=400%2C225"}]
 
 photo_data.each do |data|
   img = URI.open(data[:url])
@@ -87,4 +87,6 @@ photo_data.each do |data|
 end
 
 puts ""
-puts 'Finished seeds!'
+puts "Finished seeds! for"
+puts "event.id: #{event.id}"
+puts "organiser.id: #{organiser.id}"
