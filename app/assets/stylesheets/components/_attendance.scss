@@ -12,11 +12,10 @@ input[type="radio"] {
     width: 48px;
     text-align: center;
     transition: 0.5s ease;
-    color: white;
+    color: $brand-color;
     font-size: 17pt;
-    background-color: #ddd;
     line-height: 2em;
-    border: 2px solid white;
+    border: 2px solid $brand-color;
   }
 
   label:hover {
@@ -26,30 +25,39 @@ input[type="radio"] {
 
     label:hover[for=response_attendance_no] {
       background-color: $danger;
+      border: 2px solid black;
+      color: black;
     }
 
     label:hover[for=response_attendance_yes] {
       background-color: $success;
+      border: 2px solid black;
+      color: black;
     }
 
     label:hover[for=response_attendance_maybe] {
       background-color: $warning;
+      border: 2px solid black;
+      color: black;
     }
 
   :checked + {
     label[for=response_attendance_no] {
       background-color: $danger;
-      border: 2px solid black;
+      border: 2px solid white;
+      color: white;
     }
 
     label[for=response_attendance_yes] {
       background-color: $success;
-      border: 2px solid black;
+      border: 2px solid white;
+      color: white;
     }
 
     label[for=response_attendance_maybe] {
       background-color: $warning;
-      border: 2px solid black;
+      border: 2px solid white;
+      color: white;
     }
   }
 }

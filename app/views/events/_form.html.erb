@@ -1,19 +1,21 @@
 <%= simple_form_for @event do |e| %>
   <div class="row d-flex justify-content-end">
-    <div class="col-md-7 p-3 m-3 bg-white shadow rounded">
-        <%= e.input :name %>
-        <%= e.input :starts_at, default: DateTime.now, :order => [:month, :day, :hour, :minute] %>
-        <%= e.input :location %>
-        <%= e.input :description %>
-        <%= e.input :image, as: :file, label: "Banner image" %>
+    <div class="col-md-7 p-3 m-3 bg-dark shadow rounded pane">
+      <h5 class="pane-name">New event</h5>
+      <%= e.input :name, placeholder: "30th🙀 Birthday Party" %>
+      <%= e.input :description, placeholder: "Hi party people, join me..."%>
+      <%= e.input :starts_at, default: DateTime.now, :order => [:month, :day, :hour, :minute] %>
+      <%= e.input :location, placeholder: "At my place, on the rooftop 🏡" %>
+      <%= e.input :image, as: :file, label: "Banner image" %>
     </div>
-    <div class="col-md-4 p-3 m-3 bg-white shadow rounded">
-        <%= e.simple_fields_for @organiser do |o| %>
-          <%= o.input :name %>
-          <%= o.input :email %>
-          <%= o.input :image, as: :file, label: "Optional avatar" %>
-        <% end %>
-        <%= e.submit "Save Event", class:"btn btn-success" %>
+    <div class="col-md-4 p-3 m-3 bg-dark shadow rounded pane">
+      <h5 class="pane-name">Organiser</h5>
+      <%= e.simple_fields_for @organiser do |o| %>
+        <%= o.input :name, placeholder: "Oscar" %>
+        <%= o.input :email, placeholder: "oscar@email.com" %>
+        <%= o.input :image, as: :file, label: "Optional avatar" %>
+      <% end %>
+      <%= e.submit "Save Event", class:"btn btn-success" %>
     </div>
   </div>
 <% end %>

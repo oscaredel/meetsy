@@ -29,3 +29,56 @@ body {
 img {
   max-width: 100%;
 }
+
+
+// form input
+.form-control, input, .update_text textarea {
+  height: 2.5em;
+  border: none;
+  border-bottom: 2px solid $brand-color;
+  background-color: #222;
+  display: inline;
+  color: white;
+
+  &:focus {
+    background-color: #222;
+    box-shadow: 0px -1px 0px 1px $brand-color;
+    color: white;
+    border-bottom: 2px solid $brand-color;
+  }
+}
+
+.overlay {
+  background-color: $overlay-color;
+}
+
+path {
+  fill: $overlay-color;
+}
+
+
+.top-svg {
+  width: 100vw;
+  max-height: 50px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  bottom: 44px;
+  margin-bottom: -25px;
+}
+
+.bottom-svg {
+  width: 100vw;
+  max-height: 50px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  /* top: 44px; */
+  /* margin-top: -25px; */
+  transform: rotate(180deg);
+  background-color: $brand-color;
+}
