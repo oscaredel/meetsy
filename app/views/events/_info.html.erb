@@ -11,6 +11,16 @@
       <% end %>
       <%= @event.organiser.name %>
     </div>
+    <% if @event.organiser.id != nil && @event.organiser.id == session[:uuid] %>
+      <h5 class="d-inline">
+          <%= link_to icon('fas', 'edit') + " edit event", edit_event_path(@event), class:'btn btn-warning' %>
+          <%= link_to icon('fas', 'trash') + " delete event",
+                      event_path(@event),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class:'btn btn-danger' %>
+      </h5>
+    <% end %>
   </div>
 
   <div class="col-md-4 m-3">
