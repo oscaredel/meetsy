@@ -1,0 +1,13 @@
+.update_text textarea {
+  height: 2.5em;
+  border: none;
+  border-bottom: 2px solid $brand-color;
+  background-color: #222;
+  display: inline;
+
+  &:focus {
+    background-color: #222;
+    border: 2px solid yellow;
+    box-shadow: none;
+  }
+}
