@@ -45,6 +45,8 @@ img {
     box-shadow: inset 0px 1px 0px 1px $brand-color;
     color: white;
     border-bottom: 2px solid $brand-color;
+    outline: 0;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
 }
 
