@@ -42,7 +42,7 @@ img {
 
   &:focus {
     background-color: #222;
-    box-shadow: 0px -1px 0px 1px $brand-color;
+    box-shadow: inset 0px 1px 0px 1px $brand-color;
     color: white;
     border-bottom: 2px solid $brand-color;
   }
@@ -80,5 +80,10 @@ path {
   /* top: 44px; */
   /* margin-top: -25px; */
   transform: rotate(180deg);
+  background-color: $brand-color;
+}
+
+.btn-brand {
+  color: black;
   background-color: $brand-color;
 }

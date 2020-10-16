@@ -18,6 +18,7 @@ class UpdatesController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:event_id])
     @update = Update.find(params[:id])
     @update.destroy
     redirect_to event_path(@event)

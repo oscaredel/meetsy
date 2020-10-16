@@ -1,8 +1,12 @@
 <% if session[:uuid] %>
 
   <%= simple_form_for [@event, @update] do |u| %>
-    <%= u.input :text, label: false, placeholder: "Say something" %>
-    <%= u.submit "Send", class:"btn btn-success" %>
+    <div class="form-inline">
+        <%= u.input :text, label: false, placeholder: "Say something", input_html: { class:"grow-input flex-grow-1 mb-2" }, wrapper_html: { class:"flex-grow-1" } %>
+        <%= u.button :button, class:"btn btn-brand submit-update mb-2" do %>
+          <%= icon('fa', 'paper-plane') %>
+        <% end %>
+    </div>
   <% end %>
 
 <% end %>

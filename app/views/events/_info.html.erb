@@ -2,6 +2,16 @@
 
   <div class="col-md-7 p-3 m-3 bg-dark rounded description shadow pane">
     <h5 class="pane-name">Storytime</h5>
+        <% if @event.organiser.id != nil && @event.organiser.id == session[:uuid] %>
+      <p class="d-inline edit-event-btn">
+          <%= link_to icon('fas', 'edit') + "", edit_event_path(@event), class:'btn btn-warning' %>
+          <%= link_to icon('fas', 'trash') + "",
+                      event_path(@event),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class:'btn btn-danger' %>
+      </p>
+    <% end %>
     <p style="white-space: pre-line;"><%= @event.description %></p>
     <div class="organized-by my-2">
       <% if @event.organiser.image.attached? %>
@@ -11,16 +21,6 @@
       <% end %>
       <%= @event.organiser.name %>
     </div>
-    <% if @event.organiser.id != nil && @event.organiser.id == session[:uuid] %>
-      <p class="d-inline">
-          <%= link_to icon('fas', 'edit') + " edit event", edit_event_path(@event), class:'btn btn-warning' %>
-          <%= link_to icon('fas', 'trash') + " delete event",
-                      event_path(@event),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" },
-                      class:'btn btn-danger' %>
-      </p>
-    <% end %>
   </div>
 
   <div class="col-md-4 m-3">
@@ -40,9 +40,9 @@
         <h5 class="pane-name">Share</h5>
         <div class="">
           <div><input type="text" value="<%= event_url(@event) %>" id="copy-link-txt"></div>
-          <a class="copy-link-btn btn btn-primary" data-toggle="tooltip" data-placement="top" title="copy link to clipboard"><%= icon('fas', 'link') %></a>
-          <a class="btn btn-primary" href="mailto:?subject=RSVP: Invite to <%= @event.name %>&body=👋 Hi,%0D%0A%0D%0APlease let me know if you can come to my event!%0D%0A <%= event_url(@event) %>%0D%0A%0D%0AThanks,%0D%0A<%= @event.organiser.name  %>"><%= icon('fas', 'envelope') %></a>
-          <a class="share-native-btn btn btn-primary my-1"><%= icon('fas', 'comment') %></a>
+          <a class="copy-link-btn btn btn-brand mt-2" data-toggle="tooltip" data-placement="top" title="copy link to clipboard"><%= icon('fas', 'link') %></a>
+          <a class="btn btn-brand mt-2" href="mailto:?subject=RSVP: Invite to <%= @event.name %>&body=👋 Hi,%0D%0A%0D%0APlease let me know if you can come to my event!%0D%0A <%= event_url(@event) %>%0D%0A%0D%0AThanks,%0D%0A<%= @event.organiser.name  %>"><%= icon('fas', 'envelope') %></a>
+          <a class="share-native-btn btn btn-brand mt-2"><%= icon('fas', 'comment') %></a>
         </div>
 
         <p><small>Pro-tip: <%= icon('fas', 'plus-square') %> Add to your homescreen.</small></p>

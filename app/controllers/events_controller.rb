@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     @contact = Contact.new
     @update = Update.new
     @photo = Photo.new
-    @photos = @event.photos.take(5)
+    @photos = @event.photos.reverse.take(5)
   end
 
   def new
