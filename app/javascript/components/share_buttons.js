@@ -3,7 +3,7 @@ const shareNative = () => {
     var shareBtn = document.querySelector('.share-native-btn');
     shareBtn.addEventListener('click', clickEvent => {
       clickEvent.preventDefault();
-      navigator.share({title: document.title, text: window.location.href, url: window.location.href})
+      navigator.share({text: "Meetsy invite. Come join me!", url: window.location.href})
         .then(() => console.log('Successful share'),
          error => console.log('Error sharing:', error));
     });
