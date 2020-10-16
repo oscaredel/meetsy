@@ -14,15 +14,11 @@ class PhotosController < ApplicationController
     @event = Event.find(params[:event_id])
     @contact = Contact.find(session[:uuid])
 
-    @photo = Photo.new(photo_params)
-    @photo.event = @event
-    @photo.contact = @contact
-
-    if @photo.save
-      redirect_to event_photos_path(@event)
-    else
-      render 'new'
+    photo_params[:images].each do |image|
+      Photo.create(image: image, event: @event, contact: @contact)
     end
+
+    redirect_to event_photos_path(@event)
   end
 
   def destroy
@@ -36,6 +32,6 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:image)
+    params.require(:photo).permit(images: [])
   end
 end

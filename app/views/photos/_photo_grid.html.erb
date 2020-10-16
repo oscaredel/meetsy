@@ -3,7 +3,7 @@
   <% if session[:uuid] %>
     <%= simple_form_for [@event, @photo] do |p| %>
       <div class="photo-link">
-        <%= p.input :image, as: :file, label: icon('fas', 'photo-video'), input_html: { onchange: 'this.form.submit();' }%>
+        <%= p.input :images, as: :file, label: icon('fas', 'photo-video'), input_html: { onchange: 'this.form.submit();', multiple: true }%>
       </div>
     <% end %>
   <% end %>
