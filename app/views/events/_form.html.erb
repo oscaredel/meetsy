@@ -6,16 +6,20 @@
       <%= e.input :description, placeholder: "Hi party people, join me..."%>
       <%= e.input :starts_at, default: DateTime.now, :order => [:month, :day, :hour, :minute] %>
       <%= e.input :location, placeholder: "At my place, on the rooftop 🏡" %>
-      <%= e.input :image, as: :file, label: "Banner image" %>
+      <div class="event-image-btn">
+        <%= e.input :image, as: :file, label: icon('fas', 'image') + " upload an event image" %>
+      </div>
     </div>
     <div class="col-md-4 p-3 m-3 bg-dark shadow rounded pane">
       <h5 class="pane-name">Organiser</h5>
       <%= e.simple_fields_for @organiser do |o| %>
         <%= o.input :name, placeholder: "Oscar" %>
         <%= o.input :email, placeholder: "oscar@email.com" %>
-        <%= o.input :image, as: :file, label: "Optional avatar" %>
+        <div class="event-image-btn">
+          <%= o.input :image, as: :file, label:  icon('fas', 'user') + " upload an avatar" %>
+        </div>
       <% end %>
-      <%= e.submit "Save Event", class:"btn btn-success" %>
+      <%= e.submit "Save Event", class:"btn btn-brand" %>
     </div>
   </div>
 <% end %>
