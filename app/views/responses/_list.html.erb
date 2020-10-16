@@ -4,7 +4,8 @@
 
 <div class="attendance-container">
 
-  <% @event.responses.each do |response| %>
+  <!-- All responses ordered by attendance: yes, maybe, no -->
+  <% @event.responses.order("attendance = 1 DESC, attendance = 2 DESC, attendance = 1 DESC").each do |response| %>
 
     <div class="attendance-name">
       <%= response.contact.name %>

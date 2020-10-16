@@ -15,7 +15,7 @@ class ResponsesController < ApplicationController
     @contact = Contact.new(contact_params)
     @update = Update.new
     @photo = Photo.new
-    @photos = @event.photos.take(5)
+    @photos = @event.photos.reverse.take(5)
 
     @response.event = @event
     @response.contact = @contact
@@ -33,7 +33,8 @@ class ResponsesController < ApplicationController
     @contact = @response.contact
     @update = Update.new
     @photo = Photo.new
-    @photos = @event.photos.take(5)
+    @photos = @event.photos.reverse.take(5)
+
     render 'events/show'
   end
 
