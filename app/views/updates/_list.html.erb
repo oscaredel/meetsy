@@ -1,12 +1,16 @@
 <% @event.updates.reverse.each do |update| %>
-  <p>
-    <%= update.text %>
-    <small>
-      <% if update.contact.id == session[:uuid] %>
-        <%= link_to icon('fas', 'trash'), event_update_path(@event, update), method: :delete, data: { confirm: "Are you sure you want to remove your update?" }, class:'text-danger' %>
-      <% end %>
-      - <%= update.contact.name %>
-      - <%= time_ago_in_words(update.created_at) %> ago
-    </small>
-  </p>
+  <div class="update">
+    <p class="update-text">
+      <%= update.text %>
+    </p>
+    <div class="update-meta">
+      <small>
+        <% if update.contact.id == session[:uuid] %>
+          <%= link_to icon('fas', 'trash'), event_update_path(@event, update), method: :delete, data: { confirm: "Are you sure you want to remove your update?" }, class:'text-danger' %>
+        <% end %>
+        - <%= update.contact.name %>
+        - <%= time_ago_in_words(update.created_at) %> ago
+      </small>
+    </div>
+  </div>
 <% end %>

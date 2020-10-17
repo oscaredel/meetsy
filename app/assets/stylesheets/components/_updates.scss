@@ -7,3 +7,19 @@
   border-radius: 0px 4px 4px 0px;
   height:2.5em;
 }
+
+.update {
+  background-color: $gray;
+  border-radius: 8px;
+  color: white;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.update-text {
+  margin: 0;
+}
+
+.update-meta{
+  text-align: right;
+}
