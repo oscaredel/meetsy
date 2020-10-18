@@ -8,9 +8,46 @@
         <% if update.contact.id == session[:uuid] %>
           <%= link_to icon('fas', 'trash'), event_update_path(@event, update), method: :delete, data: { confirm: "Are you sure you want to remove your update?" }, class:'text-danger' %>
         <% end %>
-        - <%= update.contact.name %>
+        <%= update.contact.name %>
         - <%= time_ago_in_words(update.created_at) %> ago
       </small>
     </div>
+
+    <% update.comments.each do |comment| %>
+      <div class="comment">
+        <p class="comment-text">
+          <%= comment.text %>
+        </p>
+        <div class="comment-meta">
+          <small>
+            <% if update.contact.id == session[:uuid] %>
+              <%= link_to icon('fas', 'trash'), event_update_comment_path(@event, update, comment), method: :delete, data: { confirm: "Are you sure you want to remove your comment?" }, class:'text-danger' %>
+            <% end %>
+            <%= comment.contact.name %>
+            - <%= time_ago_in_words(comment.created_at) %> ago
+          </small>
+        </div>
+      </div>
+    <% end %>
+
+
+    <!-- form for comment -->
+
+    <% if session[:uuid] %>
+
+      <%= simple_form_for [@event, update, @comment] do |c| %>
+        <div class="d-flex">
+            <%= c.input :text, label: false, placeholder: "Add a comment", input_html: { class:"grow-input flex-grow-1 mb-2" }, wrapper_html: { class:"flex-grow-1" } %>
+            <%= c.button :button, class:"btn btn-brand submit-comment mb-2" do %>
+              <%= icon('fa', 'paper-plane') %>
+            <% end %>
+        </div>
+      <% end %>
+
+    <% end %>
+
   </div>
+
+
+
 <% end %>

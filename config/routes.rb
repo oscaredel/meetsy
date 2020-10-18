@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :events, only: [:show, :create, :edit, :update, :destroy] do
     resources :responses, only: [:create, :edit, :update, :destroy]
-    resources :updates, only: [:create, :destroy]
+    resources :updates, only: [:create, :destroy] do
+      resources :comments, only: [:create, :destroy]
+    end
     resources :photos, only: [:index, :show, :create, :destroy]
   end
 

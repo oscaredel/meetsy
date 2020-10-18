@@ -14,6 +14,7 @@ class EventsController < ApplicationController
     @response = Response.new
     @contact = Contact.new
     @update = Update.new
+    @comment = Comment.new
     @photo = Photo.new
     @photos = @event.photos.reverse.take(5)
   end

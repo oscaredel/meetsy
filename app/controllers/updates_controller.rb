@@ -5,6 +5,7 @@ class UpdatesController < ApplicationController
     @update = Update.new(update_params)
     @response = Response.new
     @photo = Photo.new
+    @comment = Comment.new
     @photos = @event.photos.reverse.take(5)
 
     @update.event = @event
