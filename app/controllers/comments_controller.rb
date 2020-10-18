@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
     @photos = @event.photos.reverse.take(5)
     @comment = Comment.new(comment_params)
 
-    commented_update = Update.find(params[:update_id])
+    commented_model = Update.find(params[:update_id]) || Photo.find(params[:photo_id])
 
-    @comment.commentable = commented_update
+    @comment.commentable = commented_model
     @comment.contact = @contact
 
     if @comment.save
