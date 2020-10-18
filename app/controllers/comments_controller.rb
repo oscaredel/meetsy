@@ -8,13 +8,23 @@ class CommentsController < ApplicationController
     @photos = @event.photos.reverse.take(5)
     @comment = Comment.new(comment_params)
 
-    commented_model = Update.find(params[:update_id]) || Photo.find(params[:photo_id])
+    if params.include? :update_id
+      commented_model = Update.find(params[:update_id])
+    elsif params.include? :photo_id
+      commented_model = Photo.find(params[:photo_id])
+    end
+
 
     @comment.commentable = commented_model
     @comment.contact = @contact
 
     if @comment.save
-      redirect_to event_path(@event)
+
+      if params.include? :update_id
+        redirect_to event_path(@event)
+      elsif params.include? :photo_id
+        redirect_to event_photo_path(@event, commented_model)
+      end
     else
       render 'events/show'
     end
@@ -22,10 +32,21 @@ class CommentsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:event_id])
-    @update = Update.find(params[:update_id])
+
+    if params.include? :update_id
+      commented_model = Update.find(params[:update_id])
+    elsif params.include? :photo_id
+      commented_model = Photo.find(params[:photo_id])
+    end
+
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to event_path(@event)
+
+    if params.include? :update_id
+      redirect_to event_path(@event)
+    elsif params.include? :photo_id
+      redirect_to event_photo_path(@event, commented_model)
+    end
   end
 
   private

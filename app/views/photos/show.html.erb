@@ -1,14 +1,50 @@
 <div class="row">
-  <div class="col p-3 m-3 bg-dark rounded pane text-center shadow">
+  <div class="col p-3 m-3 bg-dark rounded pane shadow">
 
     <h5 class="pane-name">Snapbox</h5>
-    <img src="<%= cl_image_path(@photo.image.key, crop: :fill) %>">
-    <p class="">📸 <%= @photo.contact.name %></p>
-    <% if @photo.contact.id == session[:uuid] %>
-      <%= link_to icon('fas', 'trash'), event_photo_path(@event, @photo), method: :delete, data: { confirm: "Are you sure you want to remove this photo?" }, class:'text-danger d-inline' %>
+    <div class="text-center">
+      <img src="<%= cl_image_path(@photo.image.key, crop: :fill) %>">
+      <br>
+      <p class="">📸
+        <% if @photo.contact.id == session[:uuid] %>
+          <%= link_to icon('fas', 'trash'), event_photo_path(@event, @photo), method: :delete, data: { confirm: "Are you sure you want to remove this photo?" }, class:'text-danger d-inline' %>
+        <% end %>
+        <%= @photo.contact.name %>
+      </p>
+    </div>
+
+    <br>
+
+    <% @photo.comments.each do |comment| %>
+      <div class="comment">
+        <p class="comment-text">
+          <%= comment.text %>
+        </p>
+        <div class="comment-meta">
+          <small>
+            <% if comment.contact.id == session[:uuid] %>
+              <%= link_to icon('fas', 'trash'), event_photo_comment_path(@event, @photo, comment), method: :delete, data: { confirm: "Are you sure you want to remove your comment?" }, class:'text-danger' %>
+            <% end %>
+            <%= comment.contact.name %>
+            - <%= time_ago_in_words(comment.created_at) %> ago
+          </small>
+        </div>
+      </div>
     <% end %>
-    <br>
-    <br>
-    <%= link_to "back to all photos", event_photos_path(@event), class:'btn btn-secondary' %>
+    <% if session[:uuid] %>
+
+      <%= simple_form_for [@event, @photo, @comment] do |c| %>
+        <div class="d-flex">
+            <%= c.input :text, label: false, placeholder: "Add a comment", input_html: { class:"grow-input flex-grow-1 mb-2" }, wrapper_html: { class:"flex-grow-1" } %>
+            <%= c.button :button, class:"btn btn-brand submit-comment mb-2" do %>
+              <%= icon('fa', 'paper-plane') %>
+            <% end %>
+        </div>
+      <% end %>
+
+    <% end %>
+    <div class="text-center">
+      <%= link_to "back to all photos", event_photos_path(@event), class:'btn btn-secondary' %>
+    </div>
   </div>
 </div>

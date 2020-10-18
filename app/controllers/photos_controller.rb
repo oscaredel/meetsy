@@ -8,6 +8,7 @@ class PhotosController < ApplicationController
   def show
     @event = Event.find(params[:event_id])
     @photo = Photo.find(params[:id])
+    @comment = Comment.new
   end
 
   def create

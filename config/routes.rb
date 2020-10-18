@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :updates, only: [:create, :destroy] do
       resources :comments, only: [:create, :destroy]
     end
-    resources :photos, only: [:index, :show, :create, :destroy]
+    resources :photos, only: [:index, :show, :create, :destroy] do
+      resources :comments, only: [:create, :destroy]
+    end
   end
 
   get '/organisers/:id/manage', to: 'events#manage', as: 'manage_event'

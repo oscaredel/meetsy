@@ -38,15 +38,15 @@ puts "Created event with id: #{event.id}"
 puts ""
 puts 'Creating seed responses and contacts for this event...'
 
-attendees = [
-  {name: 'Kamiel', email: 'kamiel@meetsymail.com', attendance: 1, message: "I'll 🐝 there",},
-  {name: 'Stijn', email: 'stijn@meetsymail.com', attendance: 1, message: "Party on!!"},
-  {name: 'Jochem', email: 'jochem@meetsymail.com', attendance: 2, message: "Cool! I'll let you know."},
-  {name: 'Luc', email: 'luc@meetsymail.com', attendance: 0, message: "Damn, can't make it!"}]
+attendees = [{name: 'Kamiel', email: 'kamiel@meetsymail.com', attendance: 1, message: "I'll 🐝 there",},
+             {name: 'Stijn', email: 'stijn@meetsymail.com', attendance: 1, message: "Party on!!"},
+             {name: 'Jochem', email: 'jochem@meetsymail.com', attendance: 2, message: "Cool! I'll let you know."},
+             {name: 'Luc', email: 'luc@meetsymail.com', attendance: 0, message: "Damn, can't make it!"}]
 
+contacts =[]
 attendees.each do |attendee|
   contact = Contact.create(name: attendee[:name], email: attendee[:email])
-  attendee[:name]
+  contacts << contact
   response = Response.create(attendance: attendee[:attendance],
                              message: attendee[:message],
                              contact_id: contact[:id],
@@ -59,14 +59,13 @@ end
 puts ""
 puts "Creating seed updates for this event..."
 
-updates = [{contact_id: Contact.find_by(name: "Kamiel").id, text: "I bought some discolights and a dj-panel! 🕺 Shall I bring them or do you have your own?"},
+update_data = [{contact_id: Contact.find_by(name: "Kamiel").id, text: "I bought some discolights and a dj-panel! 🕺 Shall I bring them or do you have your own?"},
            {contact_id: organiser.id, text: "@Everybody, FYI, time and place has been changed."}]
 
-updates.each do |update|
-  update = Update.create(text: update[:text],
-                contact_id: update[:contact_id],
-                event_id: event.id)
-
+updates = []
+update_data.each do |data|
+  update = Update.create(text: data[:text], contact_id: data[:contact_id], event_id: event.id)
+  updates << update
   puts "Created update from #{update.contact.name}: #{update.id}"
 end
 
@@ -78,13 +77,27 @@ photo_data = [{filename: "pizza.jpg", contact_id: organiser.id, url: "https://4.
               {filename: "drinks.jpg", contact_id: Contact.find_by(name: "Kamiel").id, url: "https://media-cdn.tripadvisor.com/media/photo-s/05/59/1c/fd/viking-pub-crawl-dublin.jpg"},
               {filename: "party.jpg", contact_id: Contact.find_by(name: "Luc").id, url: "https://i.pinimg.com/originals/40/86/a5/4086a586a88512093127d30738338480.jpg"},
               {filename: "guys.jpg", contact_id: Contact.find_by(name: "Kamiel").id, url: "https://bloximages.chicago2.vip.townnews.com/thesunchronicle.com/content/tncms/assets/v3/editorial/9/f2/9f2ac069-fa99-53d7-bca7-5fe11df03f20/4fbd0d141e512.image.jpg?resize=400%2C225"}]
-
+photos = []
 photo_data.each do |data|
   img = URI.open(data[:url])
   photo = Photo.create(contact_id: data[:contact_id], event_id: event.id)
+  photos << photo
   photo.image.attach(io: img, filename: data[:filename], content_type: 'image/png')
   puts "Created photo from #{photo.contact.name}: #{photo.id}"
 end
+
+
+puts ""
+puts "Creating seed comments"
+
+comment_data = [{text: "Yes, please bring them! Thanks! ✌️", contact_id: organiser.id, commentable: updates.first },
+                {text: "Nice picture!!", contact_id: contacts.third.id, commentable: photos.third }]
+
+comment_data.each do |data|
+  comment = Comment.create(text: data[:text], contact_id: data[:contact_id], commentable: data[:commentable])
+  puts "Created comment from #{comment.contact.name}: #{comment.id}"
+end
+
 
 puts ""
 puts "Finished seeds! for"
