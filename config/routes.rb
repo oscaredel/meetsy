@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: :new
+  end
+
   get '/organisers/:id/manage', to: 'events#manage', as: 'manage_event'
   get '/responses/:id/manage', to: 'responses#manage', as: 'manage_response'
 end

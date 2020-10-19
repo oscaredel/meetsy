@@ -27,8 +27,22 @@
     <%= link_to "View all snaps", event_photos_path(@event), class:'btn btn-secondary' %>
     <br>
     <br>
-    <p><small><%= icon('fas', 'info-circle') %> This free event displays photos with a maximum resolution of 0.25 megapixel. Please upgrade the event for $1.50 to see all images at full resolution. Thanks for your support! ❤️</small></p>
-    <button id="checkout-button" class="btn btn-brand">Upgrade</button>
+
+    <% if @event.order.state != 'completed' %>
+
+      <p><small><%= icon('fas', 'info-circle') %> This free event displays photos with a maximum resolution of 0.25 megapixel. Please upgrade the event for $1.50 to see all images at full resolution. Thanks for your support! ❤️</small></p>
+
+      <% if session[:uuid] %>
+        <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'event_id', @event.id %>
+          <%= hidden_field_tag 'contact_id', session[:uuid] %>
+          <%= submit_tag 'Upgrade', class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
+
+    <% else %>
+      <p><small><%= icon('fas', 'info-circle') %> Big thanks to @event.order.contact.name, for upgrading this event so all images are available at full resolution. 🤙</small></p>
+    <% end %>
   </div>
 
 
