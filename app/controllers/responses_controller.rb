@@ -57,9 +57,7 @@ class ResponsesController < ApplicationController
   def destroy
     @response.destroy
 
-    unless @event.organiser.id = session[:uuid]
-      session.delete(:uuid)
-    end
+    session.delete(:uuid) unless @event.organiser.id == session[:uuid]
 
     redirect_to event_path(@event)
   end
