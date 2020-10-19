@@ -46,13 +46,21 @@ class ResponsesController < ApplicationController
     if @contact.update(contact_params) && @response.update(response_params)
       redirect_to event_path(@event)
     else
+      @update = Update.new
+      @comment = Comment.new
+      @photo = Photo.new
+      @photos = @event.photos.reverse.take(5)
       render 'events/show'
     end
   end
 
   def destroy
     @response.destroy
-    session.delete(:uuid)
+
+    unless @event.organiser.id = session[:uuid]
+      session.delete(:uuid)
+    end
+
     redirect_to event_path(@event)
   end
 
