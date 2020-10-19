@@ -10,8 +10,9 @@
 
   <% @photos.each do |photo| %>
     <%= link_to event_photo_path(@event, photo) do %>
-      <div class="photo-item" style="background-image: url(<%= cl_image_path(photo.image.key) %>); background-position:cover;"></div>
+      <div class="photo-item" style="background-image: url(<%= cl_image_path(photo.image.key, :width => 400, :height => 400, crop: :limit) %>); background-position:cover;"></div>
     <% end %>
   <% end %>
 
 </div>
+<br>

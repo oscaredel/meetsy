@@ -13,9 +13,6 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     @contact = Contact.new(contact_params)
-    @update = Update.new
-    @photo = Photo.new
-    @photos = @event.photos.reverse.take(5)
 
     @response.event = @event
     @response.contact = @contact
@@ -25,6 +22,11 @@ class ResponsesController < ApplicationController
       redirect_to event_path(@event)
       ResponseMailer.with(response: @response, event: @event).manage.deliver_now
     else
+      # Needed to render all forms on event page
+      @update = Update.new
+      @photo = Photo.new
+      @comment = Comment.new
+      @photos = @event.photos.reverse.take(5)
       render 'events/show'
     end
   end
@@ -33,6 +35,7 @@ class ResponsesController < ApplicationController
     @contact = @response.contact
     @update = Update.new
     @photo = Photo.new
+    @comment = Comment.new
     @photos = @event.photos.reverse.take(5)
 
     render 'events/show'

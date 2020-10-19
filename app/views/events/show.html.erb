@@ -24,8 +24,10 @@
   <div class="col-md-4 p-3 m-3 bg-dark rounded pane text-center shadow">
     <h5 class="pane-name">Snapbox</h5>
     <%= render 'photos/photo_grid' %>
-    <br>
     <%= link_to "View all snaps", event_photos_path(@event), class:'btn btn-secondary' %>
+    <br>
+    <br>
+    <p><small><%= icon('fas', 'info-circle') %> After the event everybody will be asked to upload a couple of their best snaps. And before the event is deleted, you will get notified, so you can download all uploaded pictures to your photo-roll in one go.</small></p>
   </div>
 
 </div>
