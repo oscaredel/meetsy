@@ -8,7 +8,7 @@ require "open-uri"
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "Destroying all events"
+puts "Destroying all events, which also destroys all associated models"
 Event.destroy_all
 puts "Destroyed all events"
 
