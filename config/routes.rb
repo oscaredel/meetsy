@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :payments, only: :new
   end
 
+  get 'orders/:id/complete', to: 'orders#complete', as: 'complete_order'
   get '/organisers/:id/manage', to: 'events#manage', as: 'manage_event'
   get '/responses/:id/manage', to: 'responses#manage', as: 'manage_response'
 end

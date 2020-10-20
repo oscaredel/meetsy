@@ -37,4 +37,7 @@
 
   <% end %>
 </div>
-<small><%= icon('fas', 'info-circle') %> If you already answered: follow the manage-link from our email to edit your attendance and to add updates or photos</small>
+
+<% unless @event.responses.empty? %>
+  <small><%= icon('fas', 'info-circle') %> If you already answered: follow the manage-link from our email to edit your attendance and to add updates or photos</small>
+<% end %>

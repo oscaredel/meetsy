@@ -3,7 +3,12 @@
 
     <h5 class="pane-name">Snapbox</h5>
     <div class="text-center">
-      <img src="<%= cl_image_path(@photo.image.key, :width => 400, :height => 400, crop: :limit) %>">
+      <% if @event.order && @event.order.state == 'completed' %>
+        <img src="<%= cl_image_path(@photo.image.key) %>">
+      <% else %>
+          <img src="<%= cl_image_path(@photo.image.key, :width => 390, :height => 390, crop: :limit) %>">
+      <% end %>
+
       <br>
         <% if @photo.contact.id == session[:uuid] %>
           <%= link_to icon('fas', 'trash'), event_photo_path(@event, @photo), method: :delete, data: { confirm: "Are you sure you want to remove this photo?" }, class:'text-danger d-inline' %>
@@ -48,7 +53,24 @@
   <br>
     <div class="text-center">
       <%= link_to "back to all photos", event_photos_path(@event), class:'btn btn-secondary' %>
+
+      <% unless @event.order && @event.order.state == 'completed' %>
+        <br>
+        <br>
+        <p><small><%= icon('fas', 'info-circle') %> This free event displays photos with a maximum resolution of 0.15 megapixel. Please upgrade the event for €1 to see all images at full resolution. Thanks for your support! ❤️</small></p>
+
+        <% if session[:uuid] %>
+          <%= form_tag orders_path do %>
+            <%= hidden_field_tag 'event_id', @event.id %>
+            <%= hidden_field_tag 'contact_id', session[:uuid] %>
+            <%= submit_tag 'Upgrade', class: 'btn btn-primary' %>
+          <% end %>
+        <% end %>
+
+      <% end %>
+
     </div>
+
 
   </div>
 </div>

@@ -5,6 +5,7 @@
       <br>
       <p>Upgrade purchase for <strong><%= @order.event.name %></strong> for <strong><%= @order.amount %> cent</strong></p>
       <button id="pay" class="btn btn-primary">Pay</button>
+      <%= link_to "back to free event", event_path(@event), class: 'btn btn-secondary' %>
       <br>
       <br>
 

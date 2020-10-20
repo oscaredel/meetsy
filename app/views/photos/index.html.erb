@@ -8,5 +8,24 @@
     <br>
     <br>
     <p><small><%= icon('fas', 'info-circle') %> After the event everybody will be asked to upload a couple of their best snaps. And before the event is deleted, you will get notified, so you can download all uploaded pictures to your photo-roll in one go.</small></p>
+
+    <% if @event.order && @event.order.state == 'completed' %>
+
+      <p><small><%= icon('fas', 'info-circle') %> Big thanks to <strong><%= @event.order.contact.name %></strong>, for upgrading this event so all images are available at full resolution. 🤙</small></p>
+
+    <% else %>
+
+      <p><small><%= icon('fas', 'info-circle') %> This free event displays photos with a maximum resolution of 0.15 megapixel. Please upgrade the event for €1 to see all images at full resolution. Thanks for your support! ❤️</small></p>
+
+      <% if session[:uuid] %>
+        <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'event_id', @event.id %>
+          <%= hidden_field_tag 'contact_id', session[:uuid] %>
+          <%= submit_tag 'Upgrade', class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
+
+    <% end %>
   </div>
+
 </div>
