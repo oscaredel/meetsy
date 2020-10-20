@@ -25,7 +25,7 @@ puts "Created organiser-contact with id: #{organiser.id}"
 puts ""
 puts 'Creating seed event...'
 event = Event.create(name: "30th🙀 Birthday party",
-                     starts_at: Time.new(2020,6,18,21,59),
+                     starts_at: Time.new(2021, 6, 18, 21, 59, "+02:00"),
                      location: "At my place",
                      description: "Hi party people,✌️\n
                                    Let's celebrate my 30th year with a banger!💥  This will be my first birthday party in a long time, so I want it to be the biggest of the year.
