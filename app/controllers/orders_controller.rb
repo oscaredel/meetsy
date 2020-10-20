@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
       @order = @event.order
       @order.contact = @contact
     else
-      @order = Order.create!(state: 'pending', amount: 150, event: @event, contact: @contact)
+      @order = Order.create!(state: 'pending', amount: 200, event: @event, contact: @contact)
     end
 
     @session = Stripe::Checkout::Session.create(

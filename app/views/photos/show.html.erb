@@ -57,7 +57,7 @@
       <% unless @event.order && @event.order.state == 'completed' %>
         <br>
         <br>
-        <p><small><%= icon('fas', 'info-circle') %> This free event displays photos with a maximum resolution of 0.15 megapixel. Please upgrade the event for €1 to see all images at full resolution. Thanks for your support! ❤️</small></p>
+        <p><small><%= icon('fas', 'info-circle') %> This free event displays photos with a maximum resolution of 0.15 megapixel. Please upgrade the event for €2 to see all images at full resolution. Thanks for your support! ❤️</small></p>
 
         <% if session[:uuid] %>
           <%= form_tag orders_path do %>
