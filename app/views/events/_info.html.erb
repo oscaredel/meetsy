@@ -2,16 +2,17 @@
 
   <div class="col-md-7 p-3 m-3 bg-dark rounded description shadow pane">
     <h5 class="pane-name">Storytime</h5>
-        <% if @event.organiser.id != nil && @event.organiser.id == session[:uuid] %>
-      <p class="d-inline edit-event-btn">
-          <%= link_to icon('fas', 'edit') + "", edit_event_path(@event), class:'btn btn-warning' %>
-          <%= link_to icon('fas', 'trash') + "",
-                      event_path(@event),
-                      method: :delete,
-                      data: { confirm: "Are you sure you want to delete the event?" },
-                      class:'btn btn-danger' %>
-      </p>
-    <% end %>
+    <p class="d-inline edit-event-btn">
+      <%= link_to "new", root_path, class:'btn btn-brand' %>
+      <% if @event.organiser.id != nil && @event.organiser.id == session[:uuid] %>
+            <%= link_to icon('fas', 'edit') + "", edit_event_path(@event), class:'btn btn-warning' %>
+            <%= link_to icon('fas', 'trash') + "",
+                        event_path(@event),
+                        method: :delete,
+                        data: { confirm: "Are you sure you want to delete the event?" },
+                        class:'btn btn-danger' %>
+      <% end %>
+    </p>
     <p style="white-space: pre-line;"><%= @event.description %></p>
     <div class="organized-by my-2">
       <% if @event.organiser.image.attached? %>
@@ -29,7 +30,7 @@
       <div class="col-md-12 mb-3 p-3 bg-dark rounded info shadow pane">
         <h5 class="pane-name">Time & Place</h5>
         <div class="time my-2">
-          <h4 class="d-inline">🕗</h4> <%= @event.starts_at.strftime("%B %d at %H:%M") %>
+          <h4 class="d-inline">🗓</h4> <%= @event.starts_at.strftime("%B %d at %H:%M") %>
         </div>
         <div class="place my-2">
           <h4 class="d-inline">📍</h4> <%= @event.location %>

@@ -24,7 +24,8 @@
 
 .edit-event-btn {
   position: absolute;
-  top: -50px;
+  top: -56px;
+  left: 0px;
 }
 
 .event-image-btn{
@@ -36,6 +37,7 @@
   margin: 8px;
   margin-left: 0px;
   max-width: 200px;
+
   &:hover {
       background-color: #eee
   }

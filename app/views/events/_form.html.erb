@@ -1,6 +1,12 @@
 <%= simple_form_for @event do |e| %>
   <div class="row d-flex justify-content-end">
     <div class="col-md-7 p-3 m-3 bg-dark shadow rounded pane">
+      <% if @existing_event %>
+        <p class="d-inline edit-event-btn">
+          <%= link_to icon('fas', 'arrow-left') + " your event", event_path(@existing_event), class:'btn btn-brand' %>
+        </p>
+      <% end %>
+
       <h5 class="pane-name">New event</h5>
       <%= e.input :name, placeholder: "30th🙀 Birthday Party" %>
       <%= e.input :description, placeholder: "Hi party people, join me..."%>
