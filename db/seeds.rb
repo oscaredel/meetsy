@@ -8,9 +8,13 @@ require "open-uri"
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "Destroying all events, which also destroys all associated models"
-Event.destroy_all
-puts "Destroyed all events"
+# Destroy all development environment events
+if Rails.env.development?
+  puts "Destroying all development events, which also destroys all associated models"
+  Event.destroy_all
+  puts "Destroyed all events"
+  puts ""
+end
 
 puts "Starting Seeds"
 
@@ -47,7 +51,8 @@ attendees = [{name: 'Kamiel', email: 'kamiel@meetsymail.com', attendance: 1, mes
              {name: 'Jochem', email: 'jochem@meetsymail.com', attendance: 2, message: "Cool! I'll let you know."},
              {name: 'Luc', email: 'luc@meetsymail.com', attendance: 0, message: "Damn, can't make it!"}]
 
-contacts =[]
+contacts = []
+responses = []
 attendees.each do |attendee|
   contact = Contact.create(name: attendee[:name], email: attendee[:email])
   contacts << contact
@@ -55,6 +60,7 @@ attendees.each do |attendee|
                              message: attendee[:message],
                              contact_id: contact[:id],
                              event_id: event[:id])
+  responses << response
 
   puts "Created #{response.attendance} response for #{response.contact.name}, with id: #{response.id}"
 end
@@ -104,6 +110,12 @@ end
 
 
 puts ""
-puts "Finished seeds! for"
-puts "event.id: #{event.id}"
-puts "organiser.id: #{organiser.id}"
+puts "Finished seeds!"
+puts ""
+puts "event_url:"
+puts Rails.application.routes.url_helpers.event_url(event.id)
+puts "manage_event_url:"
+puts Rails.application.routes.url_helpers.manage_event_url(organiser.id)
+puts "manage_response_url:"
+puts Rails.application.routes.url_helpers.manage_response_url(responses.first.id)
+

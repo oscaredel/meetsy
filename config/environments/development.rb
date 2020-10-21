@@ -71,4 +71,7 @@ Rails.application.configure do
   # Allow ngrok tunnel to localhost in development
   config.hosts << /[a-z0-9]+\.ngrok\.io/
 
+  # Set host for seed file url helpers
+  Rails.application.routes.default_url_options[:host] = "localhost:3000"
+
 end
