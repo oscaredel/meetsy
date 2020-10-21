@@ -30,6 +30,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.organiser = @organiser
 
+    # if new event date is before yesterday, set it in the future
+    @event.starts_at = @event.starts_at < Time.now.prev_day(1) ? @event.starts_at.next_year : @event.starts_at
+
     if @organiser.save && @event.save
       session[:uuid] = @organiser.id
       redirect_to event_path(@event)
@@ -44,6 +47,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    ## TODO: limit event to future 12 months, or better, do it in a date-picker.
     @organiser = @event.organiser
     if @organiser.update(contact_params) && @event.update(event_params)
       redirect_to event_path(@event)
