@@ -3,7 +3,7 @@
   <div class="col-md-7 p-3 m-3 bg-dark rounded description shadow pane">
     <h5 class="pane-name">Storytime</h5>
     <p class="d-inline edit-event-btn">
-      <%= link_to "new", root_path, class:'btn btn-brand' %>
+      <%= link_to icon('fas', 'calendar-plus'), root_path, class:'btn btn-brand' %>
       <% if @event.organiser.id != nil && @event.organiser.id == session[:uuid] %>
             <%= link_to icon('fas', 'edit') + "", edit_event_path(@event), class:'btn btn-warning' %>
             <%= link_to icon('fas', 'trash') + "",
