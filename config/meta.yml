@@ -1,0 +1,5 @@
+meta_product_name: "Meetsy"
+meta_title: "Meetsy - a temporary private social space"
+meta_description: "Be open, in private"
+meta_image: "Meetsy-og-image.png" # should exist in `app/assets/images/`
+twitter_account: "@edeloscar"   # required for Twitter Cards
