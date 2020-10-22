@@ -30,6 +30,7 @@ import "bootstrap";
 import { responseForm } from '../components/response_form';
 import { shareNative } from '../components/share_buttons';
 import { copyLink } from '../components/share_buttons';
+import { showQRCode } from '../components/share_buttons';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -37,6 +38,7 @@ document.addEventListener('turbolinks:load', () => {
   responseForm();
   shareNative();
   copyLink();
+  showQRCode();
 
 // enable tooltips
   $(function () {

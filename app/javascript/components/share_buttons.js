@@ -3,7 +3,7 @@ const shareNative = () => {
     var shareBtn = document.querySelector('.share-native-btn');
     shareBtn.addEventListener('click', clickEvent => {
       clickEvent.preventDefault();
-      navigator.share({text: "Meetsy invite. Come join me!", url: window.location.href})
+      navigator.share({text: "Hey✌️, RSVP at my Meetsy.me space!", url: window.location.href})
         .then(() => console.log('Successful share'),
          error => console.log('Error sharing:', error));
     });
@@ -22,6 +22,17 @@ function copyLink() {
   });
 }
 
+function showQRCode() {
+  var showQRCodeBtn = document.querySelector(".show-qrcode-btn")
+  showQRCodeBtn.addEventListener('click', clickEvent => {
+    var QRCode = document.getElementById("qrcode");
+    if (QRCode.style.display === "block") {
+      QRCode.style.display = "none";
+    } else {
+      QRCode.style.display = "block";
+    }
+  });
+}
 
 
-export { shareNative, copyLink };
+export { shareNative, copyLink, showQRCode };

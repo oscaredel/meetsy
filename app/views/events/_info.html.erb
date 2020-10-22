@@ -41,9 +41,11 @@
         <h5 class="pane-name">Share</h5>
         <div class="">
           <div><input type="text input" value="<%= event_url(@event) %>" id="copy-link-txt" readonly></div>
-          <a class="copy-link-btn btn btn-brand mt-2" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-delay='{"show": 0, "hide": 300}' title="copy link to clipboard"><%= icon('fas', 'clipboard') %></a>
-          <a class="btn btn-brand mt-2" href="mailto:?subject=RSVP: Invite to <%= @event.name %>&body=👋 Hi,%0D%0A%0D%0APlease let me know if you can come to my event!%0D%0A <%= event_url(@event) %>%0D%0A%0D%0AThanks,%0D%0A<%= @event.organiser.name  %>"><%= icon('fas', 'envelope') %></a>
-          <a class="share-native-btn btn btn-brand mt-2"><%= icon('fas', 'comment') %></a>
+          <a class="copy-link-btn btn btn-brand mt-2" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="copy link to clipboard"><%= icon('fas', 'clipboard') %></a>
+          <a class="btn btn-brand mt-2" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="send e-mail template" href="mailto:?subject=RSVP: Invite to <%= @event.name %>&body=👋 Hi,%0D%0A%0D%0APlease let me know if you can come to my event!%0D%0A <%= event_url(@event) %>%0D%0A%0D%0AThanks,%0D%0A<%= @event.organiser.name  %>"><%= icon('fas', 'envelope') %></a>
+          <a class="share-native-btn btn btn-brand mt-2" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="share with native tools"><%= icon('fas', 'comment') %></a>
+          <a class="show-qrcode-btn btn btn-brand mt-2" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="toggle QR-code with url for this space"><%= icon('fas', 'qrcode') %></a>
+          <div id="qrcode"> <%= @svg.html_safe %> </div>
         </div>
 
         <p><small>Pro-tip: <%= icon('fas', 'plus-square') %> Add to your homescreen.</small></p>

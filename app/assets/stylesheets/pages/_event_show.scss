@@ -62,3 +62,13 @@
     display: none;
   }
 }
+
+#qrcode {
+  display: none;
+
+  svg {
+    background-color: black;
+    margin: 8px;
+    border-radius: 4px;
+  }
+}

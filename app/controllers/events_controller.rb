@@ -1,3 +1,5 @@
+require 'rqrcode'
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -17,6 +19,17 @@ class EventsController < ApplicationController
     @comment = Comment.new
     @photo = Photo.new
     @photos = @event.photos.reverse.take(5)
+
+    qrcode = RQRCode::QRCode.new(event_url(@event))
+
+    # NOTE: showing with default options specified explicitly
+    @svg = qrcode.as_svg(
+      offset: 8,
+      color: 'ffff',
+      shape_rendering: 'crispEdges',
+      module_size: 4.5,
+      standalone: true
+    )
   end
 
   def new
