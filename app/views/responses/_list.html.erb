@@ -31,9 +31,11 @@
       <% end %>
     </div>
 
-    <% unless response.message.empty? %>
-      <div class="attendance-message"><small><%= response.message %></small></div>
-    <% end %>
+    <div class="attendance-message">
+      <% unless response.message.empty? %>
+        <small><%= response.message %></small>
+      <% end %>
+    </div>
 
   <% end %>
 </div>
