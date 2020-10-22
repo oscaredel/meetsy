@@ -1,8 +1,8 @@
 class OrganiserMailer < ApplicationMailer
-  # default from: 'notifications@meetsy.com'
+  # default from: 'Meetsy <notifications@meetsy.me>'
 
   def manage
     @event = params[:event]
-    mail(to: @event.organiser.email, subject: 'Manage your Meetsy event')
+    mail(to: @event.organiser.email, subject: "Manage your Meetsy space for #{@event.name}")
   end
 end

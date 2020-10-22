@@ -1,5 +1,5 @@
 class ResponseMailer < ApplicationMailer
-  # default from: 'notifications@meetsy.com'
+  # default from: 'Meetsy notification <notifications@meetsy.me>'
 
   def manage
     @response = params[:response]
