@@ -63,7 +63,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Set domain used in e-mails and use letter-opener gem to automatically open e-mails in browser while developing
-  config.action_mailer.default_url_options = { host: 'https://meetsy.me' }
+  config.action_mailer.default_url_options = { host: 'www.meetsy.me' }
   # set to false to disable e-mails.
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp  # false or :smtp (then also send secrets to heroku)
@@ -98,7 +98,7 @@ Rails.application.configure do
 
 
   # Set host for seed file url helpers
-  Rails.application.default_url_options[:host] = "https://meetsy.me"
+  Rails.application.default_url_options[:host] = "www.meetsy.me"
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
