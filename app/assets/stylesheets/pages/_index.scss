@@ -1,5 +1,5 @@
 // Import page-specific CSS files here.
-@import "home";
+@import "howitworks";
 @import "event_show";
 
 body {
@@ -54,12 +54,10 @@ img {
   background-color: $overlay-color;
 }
 
-path {
-  fill: $overlay-color;
-}
-
-
-.top-svg {
+.top-svg, .bottom-svg {
+  path {
+    fill: $overlay-color;
+  }
   width: 100vw;
   max-height: 50px;
   position: relative;
@@ -67,21 +65,33 @@ path {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+
+.top-svg {
   bottom: 44px;
   margin-bottom: -25px;
 }
 
 .bottom-svg {
+  /* top: 44px; */
+  /* margin-top: -25px; */
+  transform: rotate(180deg);
+  background-color: $brand-color;
+}
+
+.duplicate-svg {
+  path {
+    fill: $overlay-color;
+  }
   width: 100vw;
   max-height: 50px;
   position: relative;
+  top: 50px;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  /* top: 44px; */
-  /* margin-top: -25px; */
-  transform: rotate(180deg);
   background-color: $brand-color;
 }
 
