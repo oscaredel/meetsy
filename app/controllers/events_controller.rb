@@ -44,7 +44,6 @@ class EventsController < ApplicationController
         @existing_event = Event.find_by(organiser: session[:uuid])
       end
     end
-
   end
 
   def create
