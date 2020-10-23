@@ -98,7 +98,7 @@ Rails.application.configure do
 
 
   # Set host for seed file url helpers
-  Rails.application.routes.default_url_options[:host] = "https://meetsy.me"
+  Rails.application.default_url_options[:host] = "https://meetsy.me"
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
