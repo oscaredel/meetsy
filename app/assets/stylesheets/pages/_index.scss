@@ -51,7 +51,7 @@ img {
 
 .top-svg, .bottom-svg {
   path {
-    fill: $overlay-color;
+    fill: $brand-color-2;
   }
   width: 100vw;
   max-height: 50px;
@@ -82,12 +82,20 @@ img {
   width: 100vw;
   max-height: 50px;
   position: relative;
+  transform: rotate(180deg);
   top: 50px;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  background-color: $brand-color;
+}
+
+.footer-svg {
+  transform: rotate(180deg);
+  path {
+    fill: $overlay-color;
+  }
+  max-height: 50px;
 }
 
 .btn-brand {
