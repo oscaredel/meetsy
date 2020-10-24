@@ -13,7 +13,7 @@
 
     <div class="attendance-buttons">
       <% if response.contact.id == session[:uuid] %>
-        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-warning' %>
+        <%= link_to icon('fas', 'edit'), edit_event_response_path(@event, response), class:'text-dark' %>
       <% end %>
       <% if response.contact.id == session[:uuid] or @event.organiser.id == session[:uuid] %>
         <%= link_to icon('fas', 'trash'), event_response_path(@event, response), method: :delete, data: { confirm: "Are you sure you want to remove your response and all shared information?" }, class:'text-danger' %>

@@ -12,7 +12,7 @@
     <%= render 'responses/form' %>
   </div>
 
-  <div class="col-md-7 p-3 m-3 bg-dark rounded shadow pane">
+  <div class="col-md-7 p-3 m-3 rounded shadow pane">
     <h5 class="pane-name">Attendance</h5>
     <%= render 'responses/list' %>
   </div>
@@ -21,13 +21,13 @@
 
 <div class="row align-items-start">
 
-  <div class="col-md-7 p-3 m-3 bg-dark rounded shadow pane">
+  <div class="col-md-7 p-3 m-3 rounded shadow pane">
     <h5 class="pane-name">Updates</h5>
     <%= render 'updates/form' %>
     <%= render 'updates/list' %>
   </div>
 
-  <div class="col-md-4 p-3 m-3 bg-dark rounded pane text-center shadow">
+  <div class="col-md-4 p-3 m-3 rounded pane text-center shadow">
     <h5 class="pane-name">Snapbox</h5>
     <%= render 'photos/photo_grid' %>
     <%= link_to "View all snaps", event_photos_path(@event), class:'btn btn-secondary' %>
@@ -40,9 +40,9 @@
 
     <% else %>
 
+      <% if session[:uuid] %>
       <p><small><%= icon('fas', 'info-circle') %> This free space displays photos with a lower resolution. Please upgrade the space for €1 to see all images at full resolution. Thanks for your support!</small></p>
       <p>❤️</p>
-      <% if session[:uuid] %>
         <%= form_tag orders_path do %>
           <%= hidden_field_tag 'event_id', @event.id %>
           <%= hidden_field_tag 'contact_id', session[:uuid] %>

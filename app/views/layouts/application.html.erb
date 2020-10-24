@@ -38,6 +38,15 @@
   </head>
 
   <body>
+      <svg class="bottom-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+        <defs>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="-8" stdDeviation="10"/>
+          </filter>
+        </defs>
+        <path style="filter:url(#shadow);" fill-opacity="1" d="M0,0L1440,256L1440,320L0,320Z"></path>
+      </svg>
+    </div>
     <%= render 'shared/banner' %>
     <%= render "events/event_banner" %>
 
@@ -69,7 +78,7 @@
     <div class="container footer">
       <div class="row">
         <div class="col text-center">
-          <%= link_to icon('fas', 'info-circle') + " How it works", howitworks_path, class: 'btn btn-info m-2' %>
+          <%= link_to icon('fas', 'info-circle') + " How it works", howitworks_path, class: 'btn btn-light m-2' %>
         </div>
       </div>
     </div>
