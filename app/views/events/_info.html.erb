@@ -1,6 +1,6 @@
 <div class="row details d-flex justify-content-between align-items-start">
 
-  <div class="col-md-7 p-3 m-3 rounded description shadow pane">
+  <div class="col-md-7 p-3 m-3 rounded description shadow-sm pane">
     <h5 class="pane-name">Storytime</h5>
     <p class="d-inline edit-event-btn">
       <%= link_to icon('fas', 'calendar-plus'), root_path, class:'btn btn-brand' %>
@@ -27,7 +27,7 @@
   <div class="col-md-4 m-3">
 
     <div class="row">
-      <div class="col-md-12 mb-3 p-3 rounded info shadow pane">
+      <div class="col-md-12 mb-3 p-3 rounded info shadow-sm pane">
         <h5 class="pane-name">Time & Place</h5>
         <div class="time my-2">
           <h4 class="d-inline">🗓</h4> <%= @event.starts_at.strftime("%B %d at %H:%M") %>
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="col-md-12 my-3 pt-3 px-2 pane rounded shadow text-center">
+      <div class="col-md-12 my-3 pt-3 px-2 pane rounded shadow-sm text-center">
         <h5 class="pane-name">Share</h5>
         <div class="">
           <div><input type="text input" value="<%= event_url(@event) %>" id="copy-link-txt" readonly></div>

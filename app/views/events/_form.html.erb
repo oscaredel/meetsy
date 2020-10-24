@@ -1,6 +1,6 @@
 <%= simple_form_for @event do |e| %>
   <div class="row d-flex justify-content-end">
-    <div class="col-md-7 p-3 m-3 shadow rounded pane">
+    <div class="col-md-7 p-3 m-3 shadow-sm rounded pane">
       <% if @existing_event %>
         <p class="d-inline edit-event-btn">
           <%= link_to icon('fas', 'arrow-left') + " " + @existing_event.name.first(10) + "..." , event_path(@existing_event), class:'btn btn-brand' %>
@@ -13,19 +13,19 @@
       <%= e.input :starts_at, default: Time.now.next_day.at_noon, :order => [:month, :day, :hour, :minute], hint: 'All dates are in the future' %>
       <%= e.input :location, placeholder: "At my place, on the rooftop 🏡" %>
       <div class="event-image-btn">
-        <%= e.input :image, as: :file, label: icon('fas', 'image') + " upload an event image" %>
+        <%= e.input :image, as: :file, label: icon('fas', 'image') + " Upload event image" %>
       </div>
     </div>
-    <div class="col-md-4 p-3 m-3 shadow rounded pane">
+    <div class="col-md-4 p-3 m-3 shadow-sm rounded pane">
       <h5 class="pane-name">Organiser</h5>
       <%= e.simple_fields_for @organiser do |o| %>
         <%= o.input :name, placeholder: "Oscar" %>
         <%= o.input :email, placeholder: "oscar@email.com" %>
         <div class="event-image-btn">
-          <%= o.input :image, as: :file, label:  icon('fas', 'user') + " upload an avatar" %>
+          <%= o.input :image, as: :file, label:  icon('fas', 'user') + " Upload avatar" %>
         </div>
       <% end %>
-      <%= e.submit "Save Event", class:"btn btn-brand" %>
+      <%= e.submit "Save Event", class:"btn btn-primary" %>
     </div>
   </div>
 <% end %>

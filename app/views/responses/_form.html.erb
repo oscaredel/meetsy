@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12 p-3 rounded response-form-inputs hidden-form shadow pane">
+    <div class="col-md-12 p-3 rounded response-form-inputs hidden-form shadow-sm pane">
       <h5 class="pane-name">Response</h5>
       <div class="row">
         <%= r.simple_fields_for @contact do |c| %>
@@ -33,7 +33,7 @@
           <div class="has-error">
             <%= r.error_notification message: r.object.errors[:base].to_sentence if r.object.errors[:base].present? %>
           </div>
-          <%= r.submit "Send RSVP", class:"btn btn-brand d-inline" %>
+          <%= r.submit "Send RSVP", class:"btn btn-primary d-inline" %>
           <%= link_to "Cancel", event_path(@event), class:"btn btn-outline d-inline" %>
         </div>
       </div>
