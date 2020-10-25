@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
-    @photos = @event.photos.reverse
+    @photos = @event.photos.order("created_at").reverse
     @photo = Photo.new
   end
 

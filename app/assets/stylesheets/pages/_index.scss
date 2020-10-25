@@ -33,7 +33,7 @@ img {
   height: 2.5em;
   border: none;
   border-bottom: 2px solid var(--brand-color-primary);
-  background-color: var(--brand-color-secondary);;
+  background-color: var(--brand-color-secondary);
   display: inline;
   color: var(--brand-color-text);
 
@@ -41,7 +41,9 @@ img {
     box-shadow: inset 0px 1px 0px 1px var(--brand-color-primary);
     border-bottom: 2px solid var(--brand-color-primary);
     outline: 0;
+    color: var(--background-color-text);
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-color: var(--brand-color-secondary);
   }
 }
 
