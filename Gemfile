@@ -28,13 +28,24 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-# custom gems
+##############################
+# CUSTOM ADDED GEMS FOR MEETSY
+##############################
+
+# For prefixing certain css for certain browsers
 gem 'autoprefixer-rails'
+# For icons
 gem 'font-awesome-sass'
+# For creating quick forms
 gem 'simple_form'
+# For active storage
 gem 'cloudinary', '~> 1.16.0'
+# For Stripe checkout session creation with orders
 gem 'stripe'
+# For generating qr-code in event share pane
 gem 'rqrcode'
+# For generating a-tags in user supplied plain text links.
+gem 'rails_autolink'
 
 group :development, :test do
   gem 'pry-byebug'

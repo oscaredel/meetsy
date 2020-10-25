@@ -33,7 +33,7 @@
           <h4 class="d-inline">🗓</h4> <%= @event.starts_at.strftime("%B %d at %H:%M") %>
         </div>
         <div class="place my-2">
-          <h4 class="d-inline">📍</h4> <%= @event.location %>
+          <h4 class="d-inline">📍</h4> <%= auto_link(@event.location) %>
         </div>
       </div>
 
