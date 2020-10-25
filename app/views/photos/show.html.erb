@@ -3,8 +3,8 @@
 
     <h5 class="pane-name">Snapbox</h5>
     <div class="text-center">
-      <%= link_to "<", event_photo_path(@event, @previous_photo), class: "btn btn-brand"  %>
-      <%= link_to ">", event_photo_path(@event, @next_photo), class: "btn btn-brand"  %>
+      <%= link_to icon('fa', 'arrow-left'), event_photo_path(@event, @previous_photo), class: "btn btn-brand"  %>
+      <%= link_to icon('fa', 'arrow-right'), event_photo_path(@event, @next_photo), class: "btn btn-brand"  %>
       <br>
       <br>
       <% if @event.order && @event.order.state == 'completed' %>
