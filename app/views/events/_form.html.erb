@@ -11,7 +11,7 @@
       <%= e.input :name, placeholder: "30th🙀 Birthday Party" %>
       <%= e.input :description, placeholder: "Hi party people, join me..."%>
       <%= e.input :starts_at, default: Time.now.next_day.at_noon, :order => [:month, :day, :hour, :minute], hint: 'All dates are in the future' %>
-      <%= e.input :location, placeholder: "At my place, on the rooftop 🏡" %>
+      <%= e.input :location, placeholder: "At my place, on the rooftop 🏡", label: "Location or URL" %>
       <div class="event-image-btn">
         <%= e.input :image, as: :file, label: icon('fas', 'image') + " Upload event image" %>
       </div>
