@@ -28,6 +28,10 @@
   left: 0px;
 }
 
+.place a {
+  word-break: break-all;
+}
+
 #event_description {
   height: 12em;
 }
