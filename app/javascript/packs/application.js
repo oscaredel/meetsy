@@ -31,10 +31,12 @@ import { responseForm } from '../components/response_form';
 import { shareNative } from '../components/share_buttons';
 import { copyLink } from '../components/share_buttons';
 import { showQRCode } from '../components/share_buttons';
+import { toggleTheme } from '../components/dark_theme';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  toggleTheme();
   responseForm();
   shareNative();
   copyLink();

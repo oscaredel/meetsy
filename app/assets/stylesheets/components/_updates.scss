@@ -5,9 +5,9 @@
 
 
 .update {
-  background-color: $brand-color-3;
+  background-color: var(--brand-color-pane);
   border-radius: 4px;
-  color: $brand-color-text;
+  color: var(--brand-color-text);
   padding: 8px;
   margin-bottom: 8px;
 }

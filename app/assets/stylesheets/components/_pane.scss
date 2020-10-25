@@ -1,7 +1,7 @@
 .pane {
-  background-color: $brand-color-3;
+  background-color: var(--brand-color-pane);
   .pane-name {
-    color: $brand-color-heading;
+    color: var(--brand-color-heading-pane);
     position: absolute;
     right: 12px;
     top: -14px;

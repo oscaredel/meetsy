@@ -9,8 +9,24 @@ $green: #28a745;
 $gray: #222;
 $light-gray: #F4F4F4;
 
-$brand-color: #ffff00;
-$brand-color-2: white;
-$brand-color-3: #F2F2F2;
-$brand-color-heading: black;
-$brand-color-text: #111;
+body {
+  --brand-color-primary: #ffff00;
+  --brand-color-secondary: white;
+  --brand-color-overlay: #ffff00;
+  --brand-color-pane: #F2F2F2;
+  --brand-color-heading: black;
+  --brand-color-heading-pane: black;
+  --brand-color-text: #111;
+  --brand-color-shadow: white;
+}
+
+body.dark-theme {
+  --brand-color-primary: #ffff00;
+  --brand-color-secondary: #111;
+  --brand-color-overlay: #333;
+  --brand-color-pane: #222;
+  --brand-color-heading: white;
+  --brand-color-heading-pane: #ffff00;
+  --brand-color-text: #fefefe;
+  --brand-color-shadow: black;
+}

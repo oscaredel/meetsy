@@ -34,7 +34,7 @@
             <%= r.error_notification message: r.object.errors[:base].to_sentence if r.object.errors[:base].present? %>
           </div>
           <%= r.submit "Send RSVP", class:"btn btn-primary d-inline" %>
-          <%= link_to "Cancel", event_path(@event), class:"btn btn-outline d-inline" %>
+          <%= link_to "Cancel", event_path(@event), class:"btn btn-dark d-inline" %>
         </div>
       </div>
     </div>

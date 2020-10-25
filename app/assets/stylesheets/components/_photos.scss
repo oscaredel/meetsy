@@ -18,7 +18,7 @@
 }
 
 .photo-link {
-  border: 3px dotted $brand-color;
+  border: 3px dotted var(--brand-color-primary);
   border-radius: 25%;
   display: flex;
   justify-content: center;
@@ -32,7 +32,7 @@
 
   label {
     font-size: 18px;
-    color: $brand-color-text;
+    color: var(--brand-color-text);
     cursor: pointer;
     z-index: 1;
     padding: 1.5em;
