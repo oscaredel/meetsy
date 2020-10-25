@@ -15,7 +15,8 @@ const toggleTheme = () => {
     theme = "dark";
   }
   // Then save the choice in a cookie
-  document.cookie = "theme=" + theme;
+  document.cookie = "theme=" + theme + " ;path='/'; max-age=200000";
+  location.reload();
   });
 }
 export { toggleTheme };
