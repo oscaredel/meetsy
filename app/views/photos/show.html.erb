@@ -3,15 +3,15 @@
 
     <h5 class="pane-name">Snapbox</h5>
     <div class="text-center">
+      <%= link_to "<", event_photo_path(@event, @previous_photo), class: "btn btn-brand"  %>
+      <%= link_to ">", event_photo_path(@event, @next_photo), class: "btn btn-brand"  %>
+      <br>
+      <br>
       <% if @event.order && @event.order.state == 'completed' %>
         <img src="<%= cl_image_path(@photo.image.key) %>">
       <% else %>
           <img src="<%= cl_image_path(@photo.image.key, :width => 390, :height => 390, crop: :limit) %>">
       <% end %>
-      <br>
-      <%= link_to "<", event_photo_path(@event, @previous_photo), class: "btn btn-brand"  %>
-      <%= link_to ">", event_photo_path(@event, @next_photo), class: "btn btn-brand"  %>
-      <br>
       <p class="">
         <% if @photo.contact.id == session[:uuid] %>
           <%= link_to icon('fas', 'trash'), event_photo_path(@event, @photo), method: :delete, data: { confirm: "Are you sure you want to remove this photo?" }, class:'text-danger d-inline' %>
