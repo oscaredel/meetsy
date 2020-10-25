@@ -8,6 +8,11 @@ class PhotosController < ApplicationController
   def show
     @event = Event.find(params[:event_id])
     @photo = Photo.find(params[:id])
+    # next photo is photo in @event.photos where photo.created_at is later than @photo.created_at
+
+    @previous_photo = (Photo.order("created_at DESC").find_by "created_at < ?", @photo.created_at) || @event.photos.order("photos.created_at").last
+    @next_photo = (Photo.find_by "created_at > ?", @photo.created_at) || @event.photos.order("photos.created_at").first
+
     @comment = Comment.new
   end
 
