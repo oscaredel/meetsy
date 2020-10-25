@@ -5,7 +5,13 @@
                                                                              else # show default placeholder-image
                                                                               "https://i.gifer.com/4Sxy.gif"
                                                                              end %>')">
-      <h1 id="event-title" class="d-inline"><%= @event.name %></h1>
+      <% if @event.name %>
+        <%= link_to event_path(@event) do %>
+          <h1 id="event-title" class="d-inline"><%= @event.name %></h1>
+        <% end %>
+        <% else %>
+          <h1>
+      <% end %>
       <br>
     </div>
   </div>

@@ -29,4 +29,9 @@ body.dark-theme {
   --brand-color-heading-pane: #ffff00;
   --brand-color-text: #fefefe;
   --brand-color-shadow: black;
+
+  // filter to make images slightly darker, doesn't work on background images yet
+  // img {
+  //   filter: brightness(.8) contrast(1.2);
+  // }
 }
