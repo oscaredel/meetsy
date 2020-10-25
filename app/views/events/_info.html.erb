@@ -13,7 +13,7 @@
                         class:'btn btn-danger' %>
       <% end %>
     </p>
-    <p style="white-space: pre-line;"><%= @event.description %></p>
+    <p style="white-space: pre-line;"><%= auto_link(@event.description, :html => { :target => '_blank' }) %></p>
     <div class="organized-by my-2">
       <% if @event.organiser.image.attached? %>
         <img src="<%= cl_image_path(@event.organiser.image.key, crop: :fill) %>" alt="Organiser-image" class="avatar">
@@ -35,7 +35,7 @@
         </div>
         <div class="place my-2 d-flex">
           <div class="mr-1"><h4>📍</h4></div>
-          <div><%= auto_link(@event.location) %></div>
+          <div><%= auto_link(@event.location, :html => { :target => '_blank' }) %></div>
         </div>
       </div>
 
