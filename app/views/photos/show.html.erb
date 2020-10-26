@@ -54,7 +54,7 @@
   </div>
   <br>
     <div class="text-center">
-      <%= link_to "back to all photos", event_photos_path(@event), class:'btn btn-secondary' %>
+      <%= link_to "back to all photos", event_photos_path(@event), class:'btn btn-dark' %>
 
       <% unless @event.order && @event.order.state == 'completed' %>
         <br>
