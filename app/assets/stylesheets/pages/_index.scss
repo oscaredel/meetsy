@@ -42,7 +42,7 @@ img {
   color: var(--brand-color-text);
 
   &:focus {
-    box-shadow: inset 0px 1px 0px 1px var(--brand-color-primary);
+    box-shadow: inset 1px 1px 0px 1px var(--brand-color-primary);
     border-bottom: 2px solid var(--brand-color-primary);
     outline: 0;
     color: var(--background-color-text);
