@@ -12,52 +12,47 @@ input[type="radio"] {
     width: 48px;
     text-align: center;
     transition: 0.5s ease;
-    color: var(--brand-color-text);
+    color: var(--brand-color-heading);
     font-size: 17pt;
     line-height: 2em;
-    border: 2px solid var(--brand-color-primary);
+    border: 2px solid var(--brand-color-heading);
   }
 
   label:hover {
-    cursor:pointer;
-    background-color:#eee;
+    cursor: pointer;
+    border: 2px solid var(--brand-color-shadow);
+    color: var(--brand-color-shadow);
   }
 
     label:hover[for=response_attendance_no] {
       background-color: $danger;
-      border: 2px solid black;
-      color: black;
     }
 
     label:hover[for=response_attendance_yes] {
       background-color: $success;
-      border: 2px solid black;
-      color: black;
     }
 
     label:hover[for=response_attendance_maybe] {
       background-color: $warning;
-      border: 2px solid black;
-      color: black;
     }
 
   :checked + {
     label[for=response_attendance_no] {
       background-color: $danger;
-      border: 2px solid white;
-      color: white;
+      border: 2px solid var(--brand-color-shadow);
+      color: var(--brand-color-shadow);
     }
 
     label[for=response_attendance_yes] {
       background-color: $success;
-      border: 2px solid white;
-      color: white;
+      border: 2px solid var(--brand-color-shadow);
+      color: var(--brand-color-shadow);
     }
 
     label[for=response_attendance_maybe] {
       background-color: $warning;
-      border: 2px solid white;
-      color: white;
+      border: 2px solid var(--brand-color-shadow);
+      color: var(--brand-color-shadow);
     }
   }
 }
@@ -104,6 +99,9 @@ input[type="radio"] {
   text-overflow: ellipsis;
 }
 
+.attendance-row {
+  margin-right: -30px;
+}
 
 .attendance-top-svg {
   z-index: -1;
@@ -123,7 +121,7 @@ input[type="radio"] {
   z-index: -1;
   position: absolute;
   right: 50vw;
-  bottom: 40px;
+  bottom: -10px;
   margin-left: -50vw;
   margin-right: -50vw;
   width: 100vw;
@@ -141,6 +139,6 @@ input[type="radio"] {
   margin-left: -50vw;
   margin-right: -50vw;
   width: 100vw;
-  height: 60px;
+  height: 80px;
   background-color: $overlay-color;
 }

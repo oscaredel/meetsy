@@ -1,11 +1,12 @@
 <%= simple_form_for [@event, @response] do |r| %>
-  <div class="row">
+  <div class="row attendance-row">
+    <div class="col-md-12 pb-3 my-4 text-center">
 
     <svg class="attendance-top-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
       <path fill-opacity="1" d="M0,0L1440,256L1440,320L0,320Z"></path>
     </svg>
+
     <div class="attendance-fill"></div>
-    <div class="col-md-12 pb-3 text-center">
 
       <h3>Are you in?</h3>
         <%= r.input :attendance,
@@ -17,14 +18,15 @@
                     as: :radio_buttons,
                     item_wrapper_class: 'form-check form-check-inline' %>
 
+
+      <svg class="attendance-bottom-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+        <path fill-opacity="1" d="M0,0L1440,256L1440,320L0,320Z"></path>
+      </svg>
+
     </div>
 
-    <svg class="attendance-bottom-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
-      <path fill-opacity="1" d="M0,0L1440,256L1440,320L0,320Z"></path>
-    </svg>
-
   </div>
-  <div class="row">
+  <div class="row mt-2">
     <div class="col-md-12 p-3 rounded response-form-inputs hidden-form shadow-sm pane">
       <h5 class="pane-name">Response</h5>
       <div class="row">
