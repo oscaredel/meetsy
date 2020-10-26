@@ -32,6 +32,7 @@ import { shareNative } from '../components/share_buttons';
 import { copyLink } from '../components/share_buttons';
 import { showQRCode } from '../components/share_buttons';
 import { toggleTheme } from '../components/dark_theme';
+import { toggleComment } from '../components/updates';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -41,6 +42,7 @@ document.addEventListener('turbolinks:load', () => {
   shareNative();
   copyLink();
   showQRCode();
+  toggleComment();
 
 // enable tooltips
   $(function () {

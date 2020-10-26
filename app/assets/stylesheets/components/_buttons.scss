@@ -4,3 +4,13 @@
   top: 8px;
   background-color: var(--brand-color-primary);
 }
+
+.comment-btn {
+  border-bottom: 1px solid var(--brand-color-primary);
+  padding-bottom: 2px;
+  transition: 0.2s ease;
+  cursor: pointer;
+  &:hover {
+    color: var(--brand-color-text);
+  }
+}

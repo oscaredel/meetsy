@@ -30,7 +30,7 @@ puts ""
 puts 'Creating seed event...'
 event = Event.create(name: "30th🙀 Birthday party",
                      starts_at: Time.utc(2021, 6, 18, 19, 59),
-                     location: "At my place",
+                     location: "www.meet.jist.si/online-birthday",
                      description: "Hi party people,✌️\n
                                    Let's celebrate my 30th year with a banger!💥  This will be my first birthday party in a long time, so I want it to be the biggest of the year.
                                    Bring your own booze. Who will get the champagne and bitterballs? And can we also get some 🍕🍕?\n
@@ -70,7 +70,7 @@ puts ""
 puts "Creating seed updates for this event..."
 
 update_data = [{contact_id: Contact.find_by(name: "Kamiel").id, text: "I bought some discolights and a dj-panel! 🕺 Shall I bring them or do you have your own?"},
-           {contact_id: organiser.id, text: "@Everybody, FYI, time and place has been changed."}]
+           {contact_id: organiser.id, text: "@Everybody, FYI, I've changed the time and place because of the new lockdown. Let's do it online. Mix your own cocktails! :)"}]
 
 updates = []
 update_data.each do |data|
