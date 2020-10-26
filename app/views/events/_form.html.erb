@@ -13,7 +13,7 @@
       <%= e.input :starts_at, default: Time.now.next_day.at_noon, :order => [:month, :day, :hour, :minute], hint: 'All dates are in the future' %>
       <%= e.input :location, placeholder: "At my place, on the rooftop 🏡", label: "Location or URL" %>
       <div class="event-image-btn">
-        <%= e.input :image, as: :file, label: icon('fas', 'image') + " Upload event image" %>
+        <%= e.input :image, as: :file, label: icon('fas', 'image') + " Upload event image", :label_html => { :class => 'btn btn-dark' } %>
       </div>
     </div>
     <div class="col-md-4 p-3 m-3 shadow-sm rounded pane">
@@ -22,7 +22,7 @@
         <%= o.input :name, placeholder: "Oscar" %>
         <%= o.input :email, placeholder: "oscar@email.com" %>
         <div class="event-image-btn">
-          <%= o.input :image, as: :file, label:  icon('fas', 'user') + " Upload avatar" %>
+          <%= o.input :image, as: :file, label:  icon('fas', 'user') + " Upload avatar", :label_html => { :class => 'btn btn-dark' } %>
         </div>
       <% end %>
       <%= e.submit "Save Event", class:"btn btn-primary" %>
