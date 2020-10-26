@@ -23,8 +23,8 @@
   <div class="col-sm-6 offset-sm-3">
     <% @photo.comments.each do |comment| %>
       <div class="comment">
-        <p class="comment-text">
-          <%= comment.text %>
+        <p class="comment-text auto-link-underline">
+          <%= auto_link(comment.text, :html => { :target => '_blank' }) %>
         </p>
         <div class="comment-meta">
           <small>

@@ -1,7 +1,7 @@
 <% @event.updates.reverse.each do |update| %>
   <div class="update">
-    <p class="update-text">
-      <%= update.text %>
+    <p class="update-text auto-link-underline">
+      <%= auto_link(update.text, :html => { :target => '_blank' }) %>
     </p>
     <div class="update-meta">
       <small>
@@ -15,8 +15,8 @@
 
     <% update.comments.each do |comment| %>
       <div class="comment">
-        <p class="comment-text">
-          <%= comment.text %>
+        <p class="comment-text auto-link-underline">
+          <%= auto_link(comment.text, :html => { :target => '_blank' }) %>
         </p>
         <div class="comment-meta">
           <small>

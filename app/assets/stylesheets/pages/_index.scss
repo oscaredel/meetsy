@@ -13,6 +13,10 @@ a, a:hover {
   text-decoration: none;
 }
 
+.auto-link-underline a {
+  border-bottom: 1px solid var(--brand-color-primary);
+}
+
 
 // To not display horizontal scrollbar when vertical scroll bar is present. Because of the svg width:100vw;
 html {
