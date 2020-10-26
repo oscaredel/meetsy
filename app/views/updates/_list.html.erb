@@ -11,7 +11,7 @@
         - <%= update.contact.name %>
         - <%= time_ago_in_words(update.created_at) %> ago
         <% if update.contact.id == session[:uuid] %>
-          <%= link_to icon('fas', 'trash'), event_update_path(@event, update), method: :delete, data: { confirm: "Are you sure you want to remove your update?" }, class:'text-danger' %>
+          - <%= link_to icon('fas', 'trash'), event_update_path(@event, update), method: :delete, data: { confirm: "Are you sure you want to remove your update?" }, class:'text-danger' %>
         <% end %>
       </small>
     </div>
@@ -23,11 +23,11 @@
         </p>
         <div class="comment-meta">
           <small>
-            <% if update.contact.id == session[:uuid] %>
-              <%= link_to icon('fas', 'trash'), event_update_comment_path(@event, update, comment), method: :delete, data: { confirm: "Are you sure you want to remove your comment?" }, class:'text-danger' %>
-            <% end %>
             <%= comment.contact.name %>
             - <%= time_ago_in_words(comment.created_at) %> ago
+            <% if update.contact.id == session[:uuid] %>
+              - <%= link_to icon('fas', 'trash'), event_update_comment_path(@event, update, comment), method: :delete, data: { confirm: "Are you sure you want to remove your comment?" }, class:'text-danger' %>
+            <% end %>
           </small>
         </div>
       </div>
@@ -40,10 +40,10 @@
 
         <%= simple_form_for [@event, update, @comment] do |c| %>
           <div class="d-flex">
-              <%= c.input :text, label: false, placeholder: "Write a comment", input_html: { class:"grow-input flex-grow-1 mb-2" }, wrapper_html: { class:"flex-grow-1" } %>
-              <%= c.button :button, class:"btn btn-brand submit-comment mb-2" do %>
-                <%= icon('fa', 'paper-plane') %>
-              <% end %>
+            <%= c.input :text, label: false, placeholder: "Write a comment", input_html: { class:"grow-input flex-grow-1 mb-2" }, wrapper_html: { class:"flex-grow-1" } %>
+            <%= c.button :button, class:"btn btn-brand submit-comment mb-2" do %>
+              <%= icon('fa', 'paper-plane') %>
+            <% end %>
           </div>
         <% end %>
 
@@ -51,7 +51,5 @@
 
     </div>
   </div>
-
-
 
 <% end %>
