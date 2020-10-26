@@ -1,6 +1,12 @@
 <%= simple_form_for [@event, @response] do |r| %>
   <div class="row">
+
+    <svg class="attendance-top-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+      <path fill-opacity="1" d="M0,0L1440,256L1440,320L0,320Z"></path>
+    </svg>
+    <div class="attendance-fill"></div>
     <div class="col-md-12 pb-3 text-center">
+
       <h3>Are you in?</h3>
         <%= r.input :attendance,
                     label: "",
@@ -10,7 +16,13 @@
                                  [icon('fas', 'times'), :no]],
                     as: :radio_buttons,
                     item_wrapper_class: 'form-check form-check-inline' %>
+
     </div>
+
+    <svg class="attendance-bottom-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+      <path fill-opacity="1" d="M0,0L1440,256L1440,320L0,320Z"></path>
+    </svg>
+
   </div>
   <div class="row">
     <div class="col-md-12 p-3 rounded response-form-inputs hidden-form shadow-sm pane">
