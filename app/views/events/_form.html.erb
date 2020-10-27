@@ -3,7 +3,7 @@
     <div class="col-md-7 p-3 m-3 shadow-sm rounded pane">
       <% if @existing_event %>
         <p class="d-inline edit-event-btn">
-          <%= link_to icon('fas', 'arrow-left') + " " + @existing_event.name.first(25) + "..." , event_path(@existing_event), class:'btn btn-brand' %>
+          <%= link_to icon('fas', 'arrow-left') + " " + @existing_event.name.first(25), event_path(@existing_event), class:'btn btn-brand' %>
         </p>
       <% end %>
 

@@ -2,7 +2,7 @@
   <div class="col m-3 mb-2">
     <% if @existing_event %>
       <p class="d-inline edit-event-btn">
-        <%= link_to icon('fas', 'arrow-left') + " " + @existing_event.name.first(25) + "..." , event_path(@existing_event), class:'btn btn-brand' %>
+        <%= link_to icon('fas', 'arrow-left') + " " + @existing_event.name.first(25), event_path(@existing_event), class:'btn btn-brand' %>
       </p>
     <% end %>
     <h2>How it works</h2>
