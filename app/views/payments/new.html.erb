@@ -3,13 +3,13 @@
     <div class="col">
       <h5>Checkout summary</h5>
       <br>
-      <p>Upgrade purchase for <strong><%= @order.event.name %></strong> for €1</strong></p>
+      <p>Upgrade purchase for <strong><%= @order.event.name %></strong> for €2</strong></p>
       <button id="pay" class="btn btn-primary">Pay</button>
       <%= link_to "back to free event", event_path(@event), class: 'btn btn-secondary' %>
       <br>
       <br>
       <br>
-      <p>This will pay for the temporary storage of your images and keep the rest of the site free. Secure payment is provided by Stripe with a variety of payment methods.</p>
+      <p>For the price of a coffee served at your event we can pay for the temporary storage of your images and keep the rest of the site free. Secure payment is provided by Stripe with a variety of payment methods.</p>
       <p>Thank you so much for your support!</p>
 
       <script src="https://js.stripe.com/v3/"></script>
