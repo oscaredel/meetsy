@@ -31,6 +31,7 @@ class OrdersController < ApplicationController
         name: "Upgrade event: #{@event.name}",
         images: [],
         amount: @order.amount,
+        # To accept `ideal`, all line items must have currency: `eur`
         currency: 'eur',
         quantity: 1
       }],
