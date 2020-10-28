@@ -2,7 +2,7 @@ require 'rqrcode'
 require 'rails_autolink'
 
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :update]
 
   def manage
     # set session uuid of response for edit/delete button for this specific response.
@@ -65,7 +65,8 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @organiser = @event.organiser
+    @organiser = Contact.find(params[:id])
+    @event = Event.find_by(contact_id: @organiser)
   end
 
   def update
@@ -79,6 +80,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @organiser = Contact.find(params[:id])
+    @event = Event.find_by(contact_id: @organiser)
     @event.destroy
     session.delete(:uuid)
     redirect_to :root

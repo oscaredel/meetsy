@@ -5,8 +5,4 @@ class OrganiserMailer < ApplicationMailer
     @event = params[:event]
     mail(to: @event.organiser.email, subject: "Manage your Meetsy space for #{@event.name}")
   end
-
-  def new_resposne
-  end
-
 end

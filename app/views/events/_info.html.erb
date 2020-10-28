@@ -5,9 +5,9 @@
     <p class="d-inline edit-event-btn">
       <%= link_to icon('fas', 'calendar-plus'), root_path, class:'btn btn-brand' %>
       <% if @event.organiser.id != nil && @event.organiser.id == session[:uuid] %>
-            <%= link_to icon('fas', 'edit') + "", edit_event_path(@event), class:'btn btn-dark' %>
+            <%= link_to icon('fas', 'edit') + "", edit_event_path(@event.organiser), class:'btn btn-dark' %>
             <%= link_to icon('fas', 'trash') + "",
-                        event_path(@event),
+                        destroy_event_path(@event.organiser),
                         method: :delete,
                         data: { confirm: "Are you sure you want to delete the event?" },
                         class:'btn btn-danger' %>
