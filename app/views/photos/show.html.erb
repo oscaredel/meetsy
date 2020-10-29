@@ -59,9 +59,9 @@
       <% unless @event.order && @event.order.state == 'completed' %>
         <br>
         <br>
-        <% if session[:uuid] %>
-        <p><small><%= icon('fas', 'info-circle') %> This free space displays photos with a lower resolution. Please upgrade the space to show all images at full resolution and be able to download them all after the event. Thanks for your support! ❤️</small></p>
+        <p><small><%= icon('fas', 'info-circle') %> This free space displays photos with a lower resolution. Please upgrade the space to show all images at full resolution and be able to download them all after the event. Thanks for your support! ✌️</small></p>
 
+        <% if session[:uuid] %>
           <%= form_tag orders_path do %>
             <%= hidden_field_tag 'event_id', @event.id %>
             <%= hidden_field_tag 'contact_id', session[:uuid] %>
