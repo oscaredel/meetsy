@@ -13,12 +13,15 @@ Analytics:  Simple Analytics
 # Setup Heroku dyno commands
 
 heroku create meetsy
+
 git push heroku master (not necessary, heroku dyno is synced with the master branch) 
 
 heroku config:set {.ENV VARIABLES}
+
 heroku run rails db:create db:migrate db:seed
 
 heroku open
+
 heroku logs --tail
 
 
